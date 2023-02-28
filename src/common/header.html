@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    #navbarSupportedContent .dropdown-menu {
+      --bs-dropdown-min-width: 8rem !important
+    }
+
+    nav {
+      background-color: #013d29 !important;
+    }
+
+    .main_tab {
+      color: white !important;
+    }
+
+    #logo img {
+      -webkit-filter: invert(1);
+      filter: invert(1);
+    }
+
+    .profile_a {
+      color: #013d29 !important;
+    }
+
+    .profile_a:hover {
+      background-color: #013d29 !important;
+      color: white !important;
+    }
+    .dropdown-item.disabled{
+
+      color: var(--bs-dropdown-link-disabled-color) !important;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark navbar-expand-lg px-4 shadow  mb-0 ">
+    <div class="container-fluid text-white">
+      <a class="navbar-brand mx-2 text-white" href="#" id="logo">
+        <img src="/images/shop.png" width="30" height="30" class="d-inline-block align-top me-1" alt="">
+        Shopaholic
+      </a>
+      <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav ">
+          <li class="av-item me-3 me-lg-0 ">
+            <a class="nav-link active main_tab" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="av-item me-3 me-lg-0">
+            <a class="nav-link main_tab" href="#">Products</a>
+          </li>
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link main_tab " href="#"><i class="bi bi-cart3 me-1 "></i> Cart</a>
+          </li>
+          <li class="nav-item dropdown me-3 me-lg-0 ">
+            <a class="nav-link dropdown-toggle main_tab" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="bi bi-person-fill me-1"></i>Profile
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item text-dark profile_a mb-1" href="/src/login.html">Login</a></li>
+              <li><a class="dropdown-item text-dark profile_a disabled" href="/src/common/home.html">My Account</a></li>
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a id="log_out" class="dropdown-item text-dark disabled profile_a" href="/src/common/home.html">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script>
+    var dropdown = document.querySelector(".dropdown a");
+    var dropdown_tabs = document.querySelectorAll(".dropdown-menu .dropdown-item")
+    var log_out=document.getElementById("log_out");
+    //future
+    var my_account;
+    if (localStorage.getItem("login")) {
+      var data = localStorage.getItem("login");
+      if (data) {
+        var user = JSON.parse(data);
+        dropdown.innerHTML = `<i class="bi bi-person-check-fill me-2"></i>Hi, ${user.username}`
+      }
+      for(var tab of dropdown_tabs)
+      {
+        console.log(tab)
+        tab.classList.toggle("disabled")
+      }
+    }
+    log_out.addEventListener('click',()=>{
+      localStorage.removeItem("login");
+    })
+  </script>
+</body>
+</html>
