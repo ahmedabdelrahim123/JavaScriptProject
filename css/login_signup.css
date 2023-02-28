@@ -19,7 +19,7 @@ section{
     .outer-div {
         width: 100%;
     }
-    hr{
+    #hr_title{
         width: 20%;
     }
 }
