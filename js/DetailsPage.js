@@ -5,8 +5,19 @@ var buy=document.getElementsByClassName("buy");
 
 var i=0;
 
-async function purchase(){
+ async function purchase(){
+   var response=await fetch ("https://dummyjson.com/products");
+    var data = await response.json();
 
+    var product=localStorage.getItem("show-item")
+    product=JSON.parse(product)
+    console.log(product[1].id);
+    var index= (product[1].id)-1;
+    var objtostore=[i,data.products[index]]
+    localStorage.setItem("show-item",JSON.stringify(objtostore))
+   var product=localStorage.getItem("show-item")
+    console.log(product);
+  
 }
 
  function increase() {
@@ -27,21 +38,24 @@ var response=await fetch ("https://dummyjson.com/products");
 var data = await response.json();
 // console.log(data);
 
+//local storage
 var product=localStorage.getItem("show-item")
 product=JSON.parse(product)
 var index= (product.id)-1;
 console.log(index);
-usersimg.setAttribute("src",data.products[index].thumbnail);
-userstitle.innerHTML=`${data.products[index].title}`;
-usersprice.innerHTML=`${data.products[index].price}`;
+
+usersimg.setAttribute("src",data.products[0].thumbnail);
+userstitle.innerHTML=`${data.products[0].title}`;
+usersprice.innerHTML=`${data.products[0].price}`;
+
 // console.log(data.products[0]);
 
-// var arrofobj=Object.values(data.products[0])
-// // console.log(arrofobj)
+var arrofobj=Object.values(data.products[0])
+// console.log(arrofobj)
 
-// var objtostore=data.products[0]
+var objtostore=[i,data.products[0]]
 
-// localStorage.setItem("show-item",JSON.stringify( objtostore))
+localStorage.setItem("show-item",JSON.stringify(objtostore))
 }
 // displaydata().then(()=>{
 
