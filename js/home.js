@@ -5,7 +5,7 @@ var catDiv = document.querySelector(".divOfCategories");
 var fetchedData;
 async function getData() {
   var response = await fetch("https://dummyjson.com/products");
-  fetchedData = await response.json(); 
+  fetchedData = await response.json();
   return fetchedData.products;
 }
 
@@ -84,7 +84,6 @@ getData().then((data) => {
     }
 
     //End of setting IDs for buttons
-
   }
 
   //Add products To Cart
@@ -115,7 +114,7 @@ getData().then((data) => {
     console.log(cart);
     console.log(cart[0].products);
 
-    localStorage.setItem("cart",JSON.stringify(cart))
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     // console.log(currentId);
     document.getElementById(currentId).style.backgroundColor = "red";
@@ -127,8 +126,6 @@ getData().then((data) => {
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", addFunction);
   }
-
-  
 });
 
 getData().then((data) => {
