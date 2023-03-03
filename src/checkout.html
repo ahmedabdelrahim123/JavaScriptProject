@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Checkout</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/checkout style.css">
+    <!-- <script src="script.js"></script> -->
+
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+
+<body>
+    <div id="arrow">
+        <a href="#">
+            <h2> <i class="bi bi-arrow-left"></i>
+            </h2>
+        </a>
+        <h4 id="backtocart"> Back to cart</h4>
+    </div>
+    <div class="card container">
+        <div id="col1">
+            <!-- Items Information section -->
+            <section class=" shadow review-box">
+                <h3>Review Item And Shipping</h3>
+                <div class="item-card card ">
+                    <img src="C:\Users\Mayar\OneDrive\Desktop\ITI\JS\Project\img.jpg">
+                    <div>
+                        <h4>Item-Name</h4>
+                        <p id="Item-Color">
+                            color: Item-Color
+                        </p>
+                    </div>
+                    <div id="qty">
+                        <h5>$0.00</h5>
+                        <p>
+                            Quantity: 0
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- <div class="form-check">
+                <input class="form-check-input" onclick="newAddress()" type="checkbox" id="check1" name="option1"
+                    value="reading">
+                <label class="form-check-label">Use different address</label>
+            </div> -->
+
+            <!-- New delivery information section -->
+            <section class="shadow review-box" id="newSection" style="display: none;">
+                <div class="save-info">
+                    <h3>Delivery Information</h3><br>
+                    <butto onclick="save()" class="btn save-btn">Save Information</button>
+                </div>
+                <div class="delivery-info">
+                    <div class="form-row">
+                        <div class="column-data">
+                            <label class="title">First Name*</label><br>
+                            <input type="text" id="fname" required class="info-box data-entry"
+                                placeholder="Type here..">
+                            <br>
+                            <p class="alert-box" id="alertn">
+                            </p>
+                        </div>
+                        <div class="column-data">
+                            <label class="title">Last Name*</label><br>
+                            <input type="text" id="lname" required class="info-box data-entry"
+                                placeholder="Type here..">
+                            <br>
+                            <p class="alert-box" id="alertn2">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="column-data">
+                            <label class="title">Address*</label><br>
+                            <input type="text" id="add" required class="wide-box data-entry" placeholder="Type here..">
+                            <br>
+                        </div>
+                        <div class="column-data"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="column-data">
+                            <label class="title">City/Town*</label><br>
+                            <input type="text" id="city" required class="mini-box data-entry" placeholder="Type here..">
+                            <br>
+
+                        </div>
+                        <div class="column-data">
+                            <label class="title">Zip Code*</label><br>
+                            <input type="text" id="zip" required class="mini-box data-entry" placeholder="Type here..">
+                            <br>
+                            <p class="alert-box" id="alertz">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="column-data">
+                            <label class="title">Mobile*</label><br>
+                            <input type="text" id="mob" required class="info-box data-entry" placeholder="Type here..">
+                            <br>
+                            <p class="alert-box" id="alertm">
+                            </p>
+                        </div>
+                        <div class="column-data">
+                            <label class="title">Email*</label><br>
+                            <input type="text" id="delEmail" required class="info-box data-entry"
+                                placeholder="Type here..">
+                            <br>
+                            <p class="alert-box" id="alerte">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- saved delivery information section -->
+            <section id="oldSection" class="shadow review-box">
+                <div class="save-info">
+                    <h3>Delivery Information</h3><br>
+                    <button class="btn edit-btn" onclick="edit()">Edit Information</button>
+                </div>
+                <div class="delivery-info">
+                    <div class="form-row">
+                        <div class="column-data">
+                            <label class="lsdata">First Name*</label><br>
+                            <p id="lsFName">
+                            </p>
+                        </div>
+                        <div class="column-data">
+                            <label class="lsdata">Last Name*</label><br>
+                            <p id="lsLName">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="column-data">
+                            <label class="lsdata">Address*</label><br>
+                            <p id="lsAddress">
+                            </p>
+                        </div>
+                        <div class="column-data"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="column-data">
+                            <label class="lsdata">City/Town*</label><br>
+                            <p id="lsCity">
+                            </p>
+                        </div>
+                        <div class="column-data">
+                            <label class="lsdata">Zip Code*</label><br>
+                            <p id="lsZip">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="column-data">
+                            <label class="lsdata">Mobile*</label><br>
+                            <p id="lsMob">
+                            </p>
+                        </div>
+                        <div class="column-data">
+                            <label class="lsdata">Email*</label><br>
+                            <p id="lsEmail">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="shadow" id="col2">
+            <h3>Order Summary</h3>
+            <hr>
+            <div class="coupon-section">
+                <input type="text" id="coupon" placeholder="Do you have a coupon?">
+                <button class="btn cpnbtn" onclick="applyCoupon()">Apply Coupon</button>
+            </div>
+            <p class="alert-box" id="alertC"></p>
+            <hr>
+            <h4>
+                Payment Details
+            </h4>
+            <hr>
+            <!-- payment method section -->
+            <section class="radio">
+                <div class=" form-check">
+                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="cod"
+                        onclick="check()" checked>
+                    <label class="form-check-label" for="radio1"> Cash on Delivery</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="cc"
+                        onclick="check()">
+                    <label class="form-check-label" for="radio2">Credit or Debit Card</label>
+                </div>
+            </section>
+            <!-- card holder info -->
+            <section id="card-info" style="display: none;">
+                <div>
+                    <img class="cards" id="amazon" src="C:\Users\Mayar\OneDrive\Desktop\ITI\JS\Project\JavaScriptProject\img\Amazon-Logo.png">
+                    <img class="cards" id="master" src="C:\Users\Mayar\OneDrive\Desktop\ITI\JS\Project\JavaScriptProject\img\master.png">
+                    <img class="cards" id="visa" src="C:\Users\Mayar\OneDrive\Desktop\ITI\JS\Project\JavaScriptProject\img\visa.png">
+                </div>
+                <form>
+                    <div>
+                        <label class="title">Email*</label><br>
+                        <input type="text" required id="email" class="pay-info-box" placeholder="Type here..">
+                        <p class="alert-box" id="alert1">
+                        </p>
+                    </div>
+                    <div>
+                        <label class="title">Card Holder Name*</label><br>
+                        <input type="text" required id="cardHolder" class="pay-info-box" placeholder="Type here..">
+                        <p class="alert-box" id="alert2">
+                        </p>
+                    </div>
+                    <div>
+                        <label class="title">Card Number*</label><br>
+                        <input type="text" required id="cardNo" class="pay-info-box" placeholder="0000-0000-0000-0000">
+                        <p class="alert-box" id="alert3">
+                        </p>
+                    </div>
+                    <div class="mini-row">
+                        <div>
+                            <label class="title">Expirey*</label><br>
+                            <!-- <input type="text" required id="exp" class="mini-box" placeholder="MM-YY"> -->
+                            <div>
+                                <select class="custom-select exp-box" id="inputGroupSelect02">
+                                    <option disabled >MM</option>
+                                    <option value="1" selected>01</option>
+                                    <option value="2">02</option>
+                                    <option value="3">03</option>
+                                    <option value="4">04</option>
+                                    <option value="5">05</option>
+                                    <option value="6">06</option>
+                                    <option value="7">07</option>
+                                    <option value="8">08</option>
+                                    <option value="9">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <label style="font-size: large;">/</label>
+                                <select class="custom-select exp-box" id="inputGroupSelect02">
+                                    <option disabled>YY</option>
+                                    <option value="23" selected>23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
+                            <p class="alert-box" id="alert4">
+                            </p>
+                        </div>
+                        <div>
+                            <label class="title">CVC*</label><br>
+                            <input type="text" required id="cvc" class="mini-box" placeholder="000">
+                            <p class="alert-box" id="alert5">
+                            </p>
+                        </div>
+                    </div>
+                </form>
+                <br>
+            </section><br>
+            <!-- payment total section -->
+            <section>
+                <table>
+                    <tr>
+                        <td class="table-title">
+                            Sub Total
+                        </td>
+                        <td id="subTot"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-title">
+                            Tax(10%)
+                        </td>
+                        <td id="tax"></td>
+                    </tr>
+                    <tr class="parent">
+                        <td class="table-title">
+                            Coupon Discount
+                        </td>
+                        <td id="cpnVal">$0.00</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid lightgray;">
+                        <td class="table-title">
+                            Shipping Cost
+                        </td>
+                        <td id="shipping">
+                            $10.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="total">
+                            Total
+                        </td>
+                        <td class="total" id="total"></td>
+                    </tr>
+                </table>
+                <div>
+                    <button class="btn large-btn" type="submit" data-bs-toggle="modal" id="payBTN" data-bs-target="#pay"
+                        onclick="submit();">Confirm</button>
+                </div>
+                <!-- pop up -->
+                <div class="modal fade" id="pay" tabindex="-1" aria-labelledby="payment" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img id="done">
+                                <h3 id='pop-up' class="modal-title text-center">
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </div>
+</body>
+
+<script>
+    ////////////////////////////////////////////////////////////////////////////adding items to local storage to test
+    var cpns = [{ name: "Hey50", value: 50 }, { name: "Hey70", value: 70 }]
+    localStorage.setItem("coupons", JSON.stringify(cpns));
+
+    var users = [
+        {
+            id: 1,
+            fName: "mohamed",
+            lName: "ali",
+            address: "el-shatby",
+            city: "alex",
+            zip: 15552,
+            mobile: "012025887426",
+            email: "7amo@yahoo.com"
+        },
+        {
+            id: 2,
+            fName: "mayar",
+            lName: "hamed",
+            address: "el-asafra",
+            city: "tanta",
+            zip: 55977,
+            mobile: "015222987756",
+            email: "mayar@gmail.com"
+        },
+    ];
+    localStorage.setItem("users", JSON.stringify(users));
+
+    var current = 2;
+    localStorage.setItem("current user", JSON.stringify(current));
+
+    var cart = [
+        {
+            custId: 1,
+            products: [{ name: "sunglasses", price: 100, qty: 2 },
+            { name: "pants", price: 250, qty: 1 },
+            { name: "necklace", price: 20, qty: 3 }]
+        },
+        {
+            custId: 2,
+            products: [{ name: "selfie stick", price: 80, qty: 1 },
+            { name: "shirt", price: 150, qty: 2 },
+            { name: "ring", price: 20, qty: 5 }]
+        }
+    ];
+    localStorage.setItem("cart", JSON.stringify(cart));
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////fetching current user Data
+    var current = JSON.parse(localStorage.getItem("current user"));
+    var users = JSON.parse(localStorage.getItem("users"));
+    var carts = JSON.parse(localStorage.getItem("cart"));
+    ////////////////////////////////////////////////////////////////////////////
+
+    //showing user delivery data saved in local storage 
+    function showData() {
+        users.forEach(user => {
+            if (user.id === current) {
+                var lsFName = document.getElementById("lsFName");
+                lsFName.innerHTML = user.fName;
+                var lsLName = document.getElementById("lsLName");
+                lsLName.innerHTML = user.lName;
+                var lsAddress = document.getElementById("lsAddress");
+                lsAddress.innerHTML = user.address;
+                var lsCity = document.getElementById("lsCity");
+                lsCity.innerHTML = user.city;
+                var lsZip = document.getElementById("lsZip");
+                lsZip.innerHTML = user.zip;
+                var lsMob = document.getElementById("lsMob");
+                lsMob.innerHTML = user.mobile;
+                var lsEmail = document.getElementById("lsEmail");
+                lsEmail.innerHTML = user.email;
+            }
+        });
+    }
+    showData();
+
+    // allow user to enter a new address 
+    // function newAddress() {
+    //     if (document.getElementById("check1").checked) {
+    //         document.getElementById("oldSection").setAttribute("style", "display:none;");
+    //         document.getElementById("newSection").removeAttribute("style");
+    //         var inputs = document.getElementsByClassName("data-entry");
+    //         for (let i = 0; i < inputs.length; i++) {
+    //             inputs[i].value = '';
+    //         }
+    //     }
+    //     else {
+    //         document.getElementById("newSection").setAttribute("style", "display:none;");
+    //         document.getElementById("oldSection").removeAttribute("style");
+    //     }
+    // }
+
+    function edit() {
+
+        //editting user saved delivery data
+
+        document.getElementById("oldSection").setAttribute("style", "display:none;");
+        document.getElementById("newSection").removeAttribute("style");
+
+        var inputfname = document.getElementById("fname");
+        var inputlname = document.getElementById("lname");
+        var inputadd = document.getElementById("add");
+        var inputcity = document.getElementById("city");
+        var inputzip = document.getElementById("zip");
+        var inputmob = document.getElementById("mob");
+        var inputdelEmail = document.getElementById("delEmail");
+
+        users.forEach(user => {
+            if (user.id === current) {
+                inputfname.value = user.fName;
+                inputlname.value = user.lName;
+                inputadd.value = user.address;
+                inputcity.value = user.city;
+                inputzip.value = user.zip;
+                inputmob.value = user.mobile;
+                inputdelEmail.value = user.email;
+            }
+        });
+        inputfname.setAttribute("disabled", "")
+        inputlname.setAttribute("disabled", "")
+
+    }
+
+    //saving delivery data to customer data in local storage
+    function save() {
+        var userFname = document.getElementById("fname");
+        var userLname = document.getElementById("lname");
+        var userAddress = document.getElementById("add");
+        var userCity = document.getElementById("city");
+        var userZip = document.getElementById("zip");
+        var userMobile = document.getElementById("mob");
+        var userEmail = document.getElementById("delEmail");
+
+        //form validation
+        const zipReg = /[0-9]{5}/
+        const mobReg = /^(012|015|011|010)[0-9]{9}/;
+        const eReg = /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/;
+
+        var flag = 0;
+
+        if (zipReg.test(userZip.value) === false) {
+            document.getElementById("alertz").innerHTML = "Please enter a valid zip code";
+            userZip.style.border = "2px solid red";
+            flag++;
+        } else {
+            document.getElementById("alertz").innerHTML = "";
+            userZip.style.border = "1px solid lightgray";
+
+        }
+        if (mobReg.test(userMobile.value) === false) {
+            document.getElementById("alertm").innerHTML = " Please enter a valid mobile number";
+            userMobile.style.border = "2px solid red";
+            flag++;
+        } else {
+            document.getElementById("alertm").innerHTML = "";
+            userMobile.style.border = "1px solid lightgray";
+        }
+        if (eReg.test(userEmail.value) === false) {
+            document.getElementById("alerte").innerHTML = " Please enter a valid email address";
+            userEmail.style.border = "2px solid red";
+            flag++;
+        } else {
+            document.getElementById("alerte").innerHTML = "";
+            userEmail.style.border = "1px solid lightgray";
+        }
+        if (userAddress.value != "" && userCity.value != "" && userZip.value != "" && userEmail.value != "" && userMobile.value != "" && flag == 0) {
+            //saving info if valid
+            users.forEach(user => {
+                if (user.id === current) {
+                    user.fName = userFname.value;
+                    user.lName = userLname.value;
+                    user.address = userAddress.value;
+                    user.city = userCity.value;
+                    user.zip = userZip.value;
+                    user.mobile = userMobile.value;
+                    user.email = userEmail.value;
+                }
+            });
+            localStorage.removeItem("users");
+            localStorage.setItem("users", JSON.stringify(users));
+
+            document.getElementById("newSection").setAttribute("style", "display:none;");
+            document.getElementById("oldSection").removeAttribute("style");
+            showData();
+
+        }
+
+    }
+
+    //calculating bill
+    var discount = 0;
+    function bill() {
+        var sub = document.getElementById("subTot");
+        var tax = document.getElementById("tax");
+        var tot = document.getElementById("total");
+
+        var subtot = 0;
+        var total = 0;
+        carts.forEach(userCart => {
+            if (userCart.custId === current) {
+                userCart.products.forEach(product => {
+                    subtot += (product.price * product.qty);
+                });
+            }
+        });
+        sub.innerText = `$${subtot}`;
+        var taxes = subtot * 0.1;
+        tax.innerText = `$${taxes}`;
+        total = subtot + taxes + 10.00 - discount;
+        tot.innerText = `$${total}`;
+    }
+    bill();
+
+    //applying discount to bill
+    var couponVal = document.createElement("td");
+    function applyCoupon() {
+        couponVal.innerHTML = "";
+        var found = false;
+        var cpn = document.getElementById("coupon");
+        var coupons = JSON.parse(localStorage.getItem("coupons"));
+
+        //searching for coupon
+        for (let i = 0; i < coupons.length; i++) {
+            if (cpn.value == coupons[i].name) {
+                found = true;
+                var cpnval = document.getElementById("cpnVal");
+                cpnval.innerText = "";
+                cpnval.innerText = `- $${coupons[i].value}`;
+                discount = coupons[i].value;
+
+                // var cpnval = document.createTextNode(`- $${coupons[i].value}`);
+                // couponVal.appendChild(cpnval);
+                // var parent = document.querySelector(".parent");
+                // parent.appendChild(couponVal);
+                break;
+            }
+            else {
+                found = false;
+            }
+        }
+        var alert = document.getElementById("alertC");
+        if (found === false) {
+            if (cpn.value == "") {
+                alert.removeAttribute("class");
+                alert.setAttribute("class", "alert-box");
+                alert.innerHTML = "No coupon entered";
+                cpn.style.border = "2px solid red";
+                discount = 0;
+            } else {
+                alert.removeAttribute("class");
+                alert.setAttribute("class", "alert-box");
+                alert.innerHTML = "Sorry, coupon not fond";
+                cpn.style.border = "2px solid red";
+                discount = 0;
+
+            }
+
+        } else {
+            alert.removeAttribute("class");
+            alert.setAttribute("class", "green-flag");
+            alert.innerHTML = "Enjoy your discount!"
+            cpn.style.border = "none";
+        }
+
+        bill();
+
+    }
+
+
+    //processing order
+    function submit() {
+
+        var email = document.getElementById("email");
+        var cardHolder = document.getElementById("cardHolder");
+        var cardNo = document.getElementById("cardNo");
+        // var exp = document.getElementById("exp");
+        var cvc = document.getElementById("cvc");
+
+        //form validation
+        var flag = 0;
+
+        const eReg = /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/;
+        const nReg = /[A-Za-z]{3,10}(\s)[A-Za-z]{3,10}/;
+        const numReg = /[0-9]{16}/;
+        // const expReg = /[0-9]{2}(-)[0-9]{2}/;
+        const cvcReg = /[0-9]{3}/;
+
+        if (eReg.test(email.value) === false) {
+            document.getElementById("alert1").innerHTML = "Please enter a valid email address";
+            email.style.border = "2px solid red";
+            flag++;
+        } else {
+            document.getElementById("alert1").innerHTML = "";
+            email.style.border = "none";
+
+        }
+        if (nReg.test(cardHolder.value) === false) {
+            document.getElementById("alert2").innerHTML = " Please enter the card holder name as written on the card";
+            cardHolder.style.border = "2px solid red";
+            flag++;
+        } else {
+            document.getElementById("alert2").innerHTML = "";
+            cardHolder.style.border = "none";
+        }
+        if (numReg.test(cardNo.value) === false) {
+            document.getElementById("alert3").innerHTML = " Card number should consist of 16 digits";
+            cardNo.style.border = "2px solid red";
+            flag++;
+        } else {
+            document.getElementById("alert3").innerHTML = "";
+            cardNo.style.border = "none";
+        }
+        // if (expReg.test(exp.value) === false) {
+        //     document.getElementById("alert4").innerHTML = " Please enter the expirey date as follows: MM-YY";
+        //     exp.style.border = "2px solid red";
+        //     flag++;
+        // } else {
+        //     document.getElementById("alert4").innerHTML = "";
+        //     exp.style.border = "none";
+        // }
+        if (cvcReg.test(cvc.value) === false) {
+            document.getElementById("alert5").innerHTML = "CVC should be 3 digits only";
+            cvc.style.border = "2px solid red";
+            flag++;
+        } else {
+            document.getElementById("alert5").innerHTML = "";
+            cvc.style.border = "none";
+        }
+
+        var pop = document.getElementById("pop-up");
+        var img = document.getElementById("done");
+
+        //confirm purchase
+        if (MOP === "cc") {
+            if (cardHolder.value != "" && cvc.value != "" && cardSelected && email.value != "" && flag === 0) {
+                // console.log("good data");
+                pop.setAttribute("style", "color:black;");
+                pop.innerHTML = "Thank you for your payment!";
+                img.setAttribute("src", "paid2.png")
+
+            } else {
+                // console.log(cardHolder.value, exp.value, cvc.value, cardSelected, email.value)
+                pop.setAttribute("style", "color:red;");
+                pop.innerHTML = "Incomplete Data!";
+                img.setAttribute("src", "no.png")
+                // console.log("missing data");
+            }
+        }
+        else {
+            pop.setAttribute("style", "color:black;");
+            pop.innerHTML = "Purchase confirmed!";
+            img.setAttribute("src", "148767.png")
+        }
+    }
+
+    var MOP = "cod";
+    var cardSelected = false;
+
+    //to change style based on which payment method is selected
+    function check() {
+        let cod = document.getElementById("radio1").checked;
+        let cc = document.getElementById("radio2").checked;
+        let payBTN = document.getElementById("payBTN");
+
+        if (cod) {
+            MOP = "cod";
+            var cardInfo = document.getElementById("card-info");
+            cardInfo.setAttribute("style", "display:none;");
+            payBTN.innerHTML = "Confirm";
+            // console.log("cod selected")
+        }
+        else {
+            MOP = "cc";
+            var cardInfo = document.getElementById("card-info");
+            cardInfo.setAttribute("style", "display:block;");
+            payBTN.innerHTML = "Pay";
+            // console.log("cc selected")
+
+        }
+    }
+
+    //to highlight the card selected
+    document.addEventListener('click', (e) => {
+        let elementClass = e.target.className;
+        if (elementClass === "cards") {
+            cardSelected = true;
+            // console.log(cardSelected)
+            let imgID = e.target.getAttribute('id');
+            // var card = document.getElementById(imgID);
+            e.target.setAttribute("style", "border:2px solid green;border-radius:25px;");
+            var otherCards = document.getElementsByClassName("cards");
+            for (let i = 0; i < otherCards.length; i++) {
+                if (otherCards[i].id != imgID) {
+                    otherCards[i].setAttribute("style", "border:none;");
+                }
+            }
+        }
+    }
+    );
+
+</script>
+
+</html>

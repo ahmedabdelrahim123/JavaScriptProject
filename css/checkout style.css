@@ -1,0 +1,263 @@
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        font-family: 'Calibri', 'Trebuchet MS', sans-serif
+    }
+
+    #arrow {
+        display: flex;
+        align-items: center;
+        padding-top: 50px;
+        padding-left: 50px;
+        width: 400px;
+    }
+
+    i {
+        color: black;
+    }
+
+    #backtocart {
+        color: black;
+        text-decoration: none;
+        padding: 10px;
+    }
+
+    .container {
+        /* margin-top: 80px; */
+        /* box-shadow: 0px 0px 5px 2px; */
+        width: 1400px;
+        display: flex;
+        flex-direction: row;
+        border: none;
+    }
+
+    #col1 {
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+        margin: 15px;
+    }
+
+    .review-box {
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        width: 750px;
+        padding: 20px;
+        margin: 20px;
+    }
+
+    #Item-Color {
+        padding-left: 10px;
+
+    }
+
+    h3,
+    h4 {
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 25px;
+    }
+
+    .item-card {
+        border: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    img {
+        width: 150px;
+        padding: 25px;
+    }
+
+    #qty {
+        margin-left: 300px;
+    }
+
+    .cards {
+        width: 100px;
+        margin-top: 20px;
+    }
+
+    #col2 {
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        width: 450px;
+        padding: 20px;
+        margin: 15px;
+    }
+
+    hr {
+        opacity: 0.1;
+    }
+
+    #coupon {
+        display: flex;
+        border: none;
+        border-radius: 25px;
+        background-color: rgba(144, 163, 188, 0.337);
+        padding: 15px;
+        width: 300px;
+    }
+
+    .cpnbtn,
+    .large-btn {
+        border: none;
+        border-radius: 25px;
+        padding: 8px;
+        margin-left: 10px;
+        background-color: #013d29;
+        color: white;
+        font-size: small;
+    }
+
+    .large-btn {
+        width: 350px;
+        margin: 20px;
+        font-size: large;
+    }
+
+    .cpnbtn:hover,
+    .large-btn:hover {
+        background-color: #013d29d7;
+        color: white;
+    }
+
+    .coupon-section {
+        width: 400px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .title {
+        font-weight: bold;
+        color: black;
+        padding: 5px;
+    }
+
+    .wide-box {
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        width: 400px;
+    }
+
+    .form-row {
+        display: flex;
+        flex-direction: row;
+        width: 600px;
+        justify-content: space-between;
+        align-content: center;
+        margin-left: 40px;
+    }
+
+    .column-data {
+        width: 350px;
+    }
+
+    .delivery-info {
+        padding: 10px;
+    }
+
+    .info-box {
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        width: 250px;
+    }
+
+    .pay-info-box {
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        width: 400px;
+    }
+
+    .mini-box {
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        width: 150px;
+    }
+    .exp-box{
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        width: 70px;
+        padding: 10px;
+
+    }
+    .mini-row {
+        display: flex;
+        flex-direction: row;
+        width: 400px;
+        justify-content: space-between;
+    }
+
+    .table-title {
+        font-weight: bold;
+        width: 300px;
+    }
+
+    td {
+        padding: 5px;
+    }
+
+    .save-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;
+    }
+
+    .save-btn,
+    .edit-btn {
+        height: min-content;
+        background-color: rgba(144, 163, 188, 0.337);
+        margin-top: 10px;
+        border-radius: 25px;
+    }
+
+    .save-btn:hover,
+    .edit-btn:hover {
+        background-color: #013d29;
+        color: white
+    }
+
+    .form-check {
+        /* padding: 20px; */
+        margin-top: 25px;
+        margin-left: 20px;
+
+    }
+
+    .modal-body {
+        padding: 50px;
+    }
+
+    .modal-body>img {
+        width: 200px;
+        margin-left: 90px;
+    }
+
+    .alert-box {
+        margin: 7px;
+        padding: 5px;
+        color: red;
+    }
+
+    .green-flag {
+        margin: 7px;
+        padding: 5px;
+        color: green;
+        font-weight: bold;
+    }
+
+    .lsdata {
+        font-weight: bold;
+    }
+
+    .total {
+        font-weight: bold;
+        font-size: large;
+    }
