@@ -4,20 +4,54 @@ var usersprice = document.getElementById("price");
 var buy=document.getElementsByClassName("buy");
 
 var i=0;
-
+var item =[];
  async function purchase(){
    var response=await fetch ("https://dummyjson.com/products");
     var data = await response.json();
-
     var product=localStorage.getItem("show-item")
     product=JSON.parse(product)
-    console.log(product[1].id);
-    var index= (product[1].id)-1;
-    var objtostore=[i,data.products[index]]
-    localStorage.setItem("show-item",JSON.stringify(objtostore))
+    console.log(product.id);
+    var index= (product.id)-1;
+    var temp= {id:data.products[index].id,
+      brand:data.products[index].brand,
+      category:data.products[index].category,
+      description:data.products[index].description,
+      title:data.products[index].title,
+      quantity:i }
+      console.log("temp");
+    console.log( temp);
+    localStorage.setItem("show-item",JSON.stringify(temp))
+   // var product=localStorage.getItem("show-item")
+   //  console.log(product);  
+}
+async function chart(){
+   var response=await fetch ("https://dummyjson.com/products");
+   var data = await response.json();
    var product=localStorage.getItem("show-item")
-    console.log(product);
-  
+   product=JSON.parse(product)
+   console.log(product.id);
+   var index= (product.id)-1;
+   var temp= {id:data.products[index].id,
+     brand:data.products[index].brand,
+     category:data.products[index].category,
+     description:data.products[index].description,
+     title:data.products[index].title,
+     quantity:i }
+   item.push(temp);
+   localStorage.setItem("add-to-cart",JSON.stringify(item));
+   console.log("item");
+   console.log( item);
+}
+async function back (){
+   var response=await fetch ("https://dummyjson.com/products");
+   var data = await response.json();
+   var product=localStorage.getItem("show-item")
+   product=JSON.parse(product)
+   if (product.quantity===0)
+   {   
+      console.log();
+      localStorage.removeItem("show-item")
+      }
 }
 
  function increase() {
@@ -41,8 +75,8 @@ var data = await response.json();
 //local storage
 var product=localStorage.getItem("show-item")
 product=JSON.parse(product)
-var index= (product.id)-1;
-console.log(index);
+// var index= (product.id)-1;
+// console.log(index);
 
 usersimg.setAttribute("src",data.products[0].thumbnail);
 userstitle.innerHTML=`${data.products[0].title}`;
@@ -51,11 +85,16 @@ usersprice.innerHTML=`${data.products[0].price}`;
 // console.log(data.products[0]);
 
 var arrofobj=Object.values(data.products[0])
-// console.log(arrofobj)
-
-var objtostore=[i,data.products[0]]
-
-localStorage.setItem("show-item",JSON.stringify(objtostore))
+var index=0;
+var temp= {id:data.products[index].id,
+   brand:data.products[index].brand,
+   category:data.products[index].category,
+   description:data.products[index].description,
+   title:data.products[index].title,
+   quantity:i }
+   console.log("temp");
+ console.log( temp);
+ localStorage.setItem("show-item",JSON.stringify(temp))
 }
 // displaydata().then(()=>{
 
