@@ -137,9 +137,6 @@ getData().then((data) => {
           };
           for(user of users){
           if (currentUser.email == user.email ) {
-            console.log(user.email)
-            console.log(cartProduct)
-            console.log(typeof user.cart)
             user.cart.push(cartProduct);
             
           } 
@@ -150,44 +147,35 @@ getData().then((data) => {
       }
      
     }
+    else{
+      var modal=document.createElement("div");
+      modal.innerHTML=`
+      <div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onc>Close</button>
+        <button type="button" class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+      `
+      rowDiv.appendChild(modal)
+    }
     
   };
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", addToCart);
   }
-  // var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  // var cart = [{ userID: currentUser.id, products: [] }];
   
-  // var addFunction = function () {
-  //   var cartProduct;
-  //   var currentId = this.id;
-  //   console.log(currentId);
-  //   for (var item of data) {
-  //     if (currentId == item.id) {
-  //       console.log(currentId);
-  //       cartProduct = {
-  //         id: item.id,
-  //         title: item.title,
-  //         category: item.category,
-  //         price: item.price,
-  //         image: item.images[1],
-  //         quantity: 1,
-  //       };
-  //       cart[0].products.push(cartProduct);
-  //     }
-  //   }
-  //   // console.log(typeof(cart.products))
-  //   console.log(cart);
-  //   console.log(cart[0].products);
-
-  //   localStorage.setItem("cart", JSON.stringify(cart));
-
-  //   // console.log(currentId);
-  //   document.getElementById(currentId).style.backgroundColor = "red";
-  //   document.getElementById(currentId).innerHTML = "Remove";
-  //   document.getElementById(currentId).style.borderColor = "red";
-  //   // document.getElementsByClassName("cart").style.backgroundColor = "red";
-  // };
 
   
 });
