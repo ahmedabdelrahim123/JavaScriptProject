@@ -6,19 +6,33 @@
     <meta charset="utf-8">
     <title>Checkout</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="../css/checkout style.css">
     <!-- <script src="script.js"></script> -->
-
-</head>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
 
+   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+  </script>
+  <script>
+    $(function () {
+      $("#header").load("../src/common/header.html");
+      $("#footer").load("../src/common/footer.html");
+    });
+  </script>
+
+</head>
+
+
 <body>
+
+    <header id="header"></header>
+
+
     <div id="arrow">
         <a href="#">
             <h2> <i class="bi bi-arrow-left"></i>
@@ -330,12 +344,14 @@
     </div>
 </body>
 
+<footer id="footer"></footer>
+
 <script>
     ////////////////////////////////////////////////////////////////////////////adding items to local storage to test
     var cpns = [{ name: "Hey50", value: 50 }, { name: "Hey70", value: 70 }]
     localStorage.setItem("coupons", JSON.stringify(cpns));
 
-    var users = [
+    /* var users = [
         {
             id: 1,
             fName: "mohamed",
@@ -358,8 +374,8 @@
         },
     ];
     localStorage.setItem("users", JSON.stringify(users));
-
-    var current = 2;
+ */
+    /* var current = 2;
     localStorage.setItem("current user", JSON.stringify(current));
 
     var cart = [
@@ -376,7 +392,7 @@
             { name: "ring", price: 20, qty: 5 }]
         }
     ];
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart)); */
     ////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////fetching current user Data

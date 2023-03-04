@@ -1,4 +1,4 @@
-var users = [{
+/* var users = [{
     id: 1,
     name:"omnia",
     age:23,
@@ -34,7 +34,7 @@ var users = [{
     age:20,
     cart:[]
 }]
-window.localStorage.setItem("users", JSON.stringify(users))
+window.localStorage.setItem("users", JSON.stringify(users)) */
 
 var table_body = document.querySelector("tbody")
 var allPrice  = document.querySelector(".total-price")
