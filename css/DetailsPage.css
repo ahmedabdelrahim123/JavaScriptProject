@@ -1,17 +1,18 @@
 #image{  
  height: 300px;
- width: 200px;
+ width: 400px;
 }
-.row{
-    padding-left: 50px;
-}
-.buy{
-    width: 100px;
+
+/* .row{
+    
+} */
+.add_to_chart{
+    width: 200px;
     color:antiquewhite;
     background-color:#013d29;
 }
-.add_to_chart{
-    width: 200px;
+.back{
+    width: 100px;
     color:#013d29;
     background-color:whitesmoke;
 }
@@ -21,14 +22,38 @@
 body{
     background-color: whitesmoke;
 }
-/* .quantity_counter{
-    display: none;
-    
-} */
+
 #quantity{
     width: 50px; text-align: center; border-color: black;
 }
 
 .quantity_counter{
-  padding-left: 142px;
+  padding-left: 1px;
 }
+
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+

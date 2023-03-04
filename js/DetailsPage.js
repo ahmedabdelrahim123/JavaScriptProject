@@ -2,9 +2,44 @@ var usersimg = document.getElementById("image");
 var userstitle = document.getElementById("title");
 var usersprice = document.getElementById("price");
 var buy=document.getElementsByClassName("buy");
+var pageindex=0;
 
 var i=0;
 var item =[];
+async function getprevious(){
+   var response=await fetch ("https://dummyjson.com/products");
+   var data = await response.json();
+   var product=localStorage.getItem("show-item")
+   product=JSON.parse(product)
+   // console.log(product.id);
+   var index= (product.id)-1;
+   // console.log(data.products[0].images[pageindex++])
+   if (pageindex !=0)
+  { 
+   var previousimage=data.products[index].images[pageindex--];
+   console.log(pageindex);
+   console.log(previousimage)
+   usersimg.setAttribute("src",previousimage);}
+
+}
+async function getnext(){
+   var response=await fetch ("https://dummyjson.com/products");
+   var data = await response.json();
+   var product=localStorage.getItem("show-item")
+   product=JSON.parse(product)
+   // console.log(product.id);
+   var index= (product.id)-1;
+   // console.log(data.products[0].images[pageindex++])
+   if (pageindex !=4)
+   { 
+      var nextimage=data.products[index].images[pageindex++];
+      console.log(pageindex);
+      console.log(nextimage)
+      usersimg.setAttribute("src",nextimage);}
+
+   
+}
+
  async function purchase(){
    var response=await fetch ("https://dummyjson.com/products");
     var data = await response.json();
@@ -47,11 +82,11 @@ async function back (){
    var data = await response.json();
    var product=localStorage.getItem("show-item")
    product=JSON.parse(product)
-   if (product.quantity===0)
-   {   
-      console.log();
-      localStorage.removeItem("show-item")
-      }
+   // if (product.quantity===0)
+   // {   
+      
+   //    localStorage.removeItem("show-item")
+   //    }
 }
 
  function increase() {
@@ -78,7 +113,7 @@ product=JSON.parse(product)
 // var index= (product.id)-1;
 // console.log(index);
 
-usersimg.setAttribute("src",data.products[0].thumbnail);
+usersimg.setAttribute("src",data.products[index].images[pageindex]);
 userstitle.innerHTML=`${data.products[0].title}`;
 usersprice.innerHTML=`${data.products[0].price}`;
 
@@ -91,7 +126,11 @@ var temp= {id:data.products[index].id,
    category:data.products[index].category,
    description:data.products[index].description,
    title:data.products[index].title,
-   quantity:i }
+   quantity:i ,
+   
+    images:data.products[index].images
+  
+}
    console.log("temp");
  console.log( temp);
  localStorage.setItem("show-item",JSON.stringify(temp))
