@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="../css/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+      href="/bower_components/bootstrap-horizon/bootstrap-horizon.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+    <!-- <link rel="stylesheet" href="../css/reset.css"> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+  </script>
+  <script>
+    $(function () {
+      $("#header").load("../src/common/header.html");
+      $("#footer").load("../src/common/footer.html");
+    });
+  </script>
+    <title>Document</title>
+  </head>
+  <body>
+
+    <header id="header"></header>
+
+    <div class="container-fluid ">
+      <h2>welcome</h2>
+      <div>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade"
+          data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="../images/612-T5YABuL._SX3000_.jpg" class="d-block
+                w-100"
+                alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="../images/619xcE1JVEL._SX3000_.jpg" class="d-block
+                w-100"
+                alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="../images/61USpGJrRdL._SX3000_.jpg" class="d-block
+                w-100"
+                alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button"
+            data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button"
+            data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <h2>Todays Best Dails For You!</h2>
+      <div class="container">
+        <div class="row divOfBestSeller d-flex flex-row flex-nowrap ">
+
+        </div>
+      </div>
+      <h2>Shop By Categories</h2>
+      <div class="container">
+        <div class="row divOfCategories ">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="https://cdn.shopify.com/s/files/1/0410/9608/5665/t/3/assets/pf-7115f8d1--cover-image-2.jpg?v=1614833751" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer"></footer>
+    <script src="../css/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="../js/home.js"></script>
+  </body>
+</html>

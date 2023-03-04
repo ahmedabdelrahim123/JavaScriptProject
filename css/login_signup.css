@@ -1,0 +1,25 @@
+.outer-div {
+    width: 85%;
+}
+
+#hr_title{
+    border: 2px solid #013d29;
+    border-radius: 5px;
+    opacity: 1 !important;
+    width:15%;
+}
+.login_icon{
+    color: #013d29;
+}
+section{
+    transform: scale(0.9);
+}
+
+@media (max-width: 550px) {
+    .outer-div {
+        width: 100%;
+    }
+    #hr_title{
+        width: 20%;
+    }
+}

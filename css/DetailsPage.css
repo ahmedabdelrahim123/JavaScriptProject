@@ -1,0 +1,34 @@
+#image{  
+ height: 300px;
+ width: 200px;
+}
+.row{
+    padding-left: 50px;
+}
+.buy{
+    width: 100px;
+    color:antiquewhite;
+    background-color:#013d29;
+}
+.add_to_chart{
+    width: 200px;
+    color:#013d29;
+    background-color:whitesmoke;
+}
+.btn{
+    background-color: #013d29;color: white;
+}
+body{
+    background-color: whitesmoke;
+}
+/* .quantity_counter{
+    display: none;
+    
+} */
+#quantity{
+    width: 50px; text-align: center; border-color: black;
+}
+
+.quantity_counter{
+  padding-left: 142px;
+}

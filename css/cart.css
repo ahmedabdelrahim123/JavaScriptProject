@@ -1,0 +1,36 @@
+.input-group{
+    width: 109px;
+    margin: 0 auto;
+}
+.input-group-text {
+    background-color: #013d294d;
+    cursor: pointer;
+    user-select: none;
+}
+.btn:hover{
+    background-color: #013d29d7;
+}
+.btn{
+    background-color: #013d29;
+}
+tr:nth-child(2n){
+    background: #80808033;
+}
+tr,th{
+   border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
+}
+tr td:last-child, tr{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.fa-trash{
+ color: #013d29;
+}
+
+@media(max-width:750px){
+    th{
+        text-align: center;
+    }
+}
+
