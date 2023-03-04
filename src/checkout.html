@@ -20,8 +20,8 @@
 
 <body>
     <div id="arrow">
-        <a href="#">
-            <h2> <i class="bi bi-arrow-left"></i>
+        <a href="../src/cart.html">
+            <h2> <i class="bi bi-arrow-left icon"></i>
             </h2>
         </a>
         <h4 id="backtocart"> Back to cart</h4>
@@ -32,7 +32,7 @@
             <section class=" shadow review-box">
                 <h3>Review Item And Shipping</h3>
                 <div class="item-card card ">
-                    <img src="C:\Users\Mayar\OneDrive\Desktop\ITI\JS\Project\img.jpg">
+                    <img class="image" src="C:\Users\Mayar\OneDrive\Desktop\ITI\JS\Project\img.jpg">
                     <div>
                         <h4>Item-Name</h4>
                         <p id="Item-Color">
@@ -47,6 +47,7 @@
                     </div>
                 </div>
             </section>
+
             <!-- <div class="form-check">
                 <input class="form-check-input" onclick="newAddress()" type="checkbox" id="check1" name="option1"
                     value="reading">
@@ -600,7 +601,6 @@
 
     }
 
-
     //processing order
     function submit() {
 
@@ -670,20 +670,20 @@
                 // console.log("good data");
                 pop.setAttribute("style", "color:black;");
                 pop.innerHTML = "Thank you for your payment!";
-                img.setAttribute("src", "paid2.png")
+                img.setAttribute("src", "../img/paid2.png")
 
             } else {
                 // console.log(cardHolder.value, exp.value, cvc.value, cardSelected, email.value)
                 pop.setAttribute("style", "color:red;");
                 pop.innerHTML = "Incomplete Data!";
-                img.setAttribute("src", "no.png")
+                img.setAttribute("src", "../img/no.png")
                 // console.log("missing data");
             }
         }
         else {
             pop.setAttribute("style", "color:black;");
             pop.innerHTML = "Purchase confirmed!";
-            img.setAttribute("src", "148767.png")
+            img.setAttribute("src", "../img/confirm.png")
         }
     }
 

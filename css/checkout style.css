@@ -13,7 +13,7 @@
         width: 400px;
     }
 
-    i {
+    .icon {
         color: black;
     }
 
@@ -66,7 +66,7 @@
         align-items: center;
     }
 
-    img {
+    .image {
         width: 150px;
         padding: 25px;
     }
