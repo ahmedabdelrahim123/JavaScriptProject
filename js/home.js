@@ -1,5 +1,6 @@
 var rowDiv = document.querySelector(".divOfBestSeller");
 var catDiv = document.querySelector(".divOfCategories");
+var categRow = document.querySelector(".categRow");
 
 //fetch data from dummy json
 var fetchedData;
@@ -13,67 +14,6 @@ getData().then((data) => {
   localStorage.setItem("allProducts", JSON.stringify(data));
 
   for (var item of data) {
-    // console.log(item);
-    //start of Todays Best Dails For You! HTML
-    // var cardDiv = document.createElement("div");
-    // cardDiv.classList.add("card", "shadow", "cardCont");
-    // cardDiv.setAttribute("id", "card");
-    // var imgDiv = document.createElement("div");
-    // imgDiv.classList.add("imgContainer");
-
-    // var img = document.createElement("img");
-    // img.classList.add("card-img-top");
-    // img.setAttribute("src", item.images[0]);
-    // imgDiv.append(img);
-
-    // var cardBodyDiv = document.createElement("div");
-    // cardBodyDiv.classList.add("card-body");
-
-    // var NameAndPrice = document.createElement("div");
-    // NameAndPrice.classList.add("containerOfNameAndPrice");
-
-    // var price = document.createElement("p");
-    // var productPrice = document.createTextNode(item.price);
-    // price.appendChild(productPrice);
-
-    // var name = document.createElement("h5");
-    // name.classList.add("card-title");
-    // var productName = document.createTextNode(item.title);
-    // name.appendChild(productName);
-
-    // NameAndPrice.append(name, price);
-    // descDiv = document.createElement("div");
-    // descDiv.classList.add("descContainer");
-
-    // var pDescription = document.createElement("p");
-    // pDescription.classList.add("card-text");
-    // var description = document.createTextNode(item.description);
-
-    // var buttonAndQuantity = document.createElement("div");
-    // buttonAndQuantity.classList.add("containerOfButtonAndQuantity");
-
-    // var addToCart = document.createElement("button");
-    // addToCart.classList.add("cart");
-    // addToCart.setAttribute("id", "carti");
-    // var cartButtonName = document.createTextNode("Add to cart");
-    // addToCart.appendChild(cartButtonName);
-
-    // var details = document.createElement("button");
-    // details.classList.add("details");
-    // var detailsButtonName = document.createTextNode("Details");
-    // details.appendChild(detailsButtonName);
-
-    // buttonAndQuantity.append(addToCart, details);
-
-    // pDescription.appendChild(description);
-
-    // descDiv.append(pDescription);
-
-    // cardBodyDiv.append(NameAndPrice, descDiv);
-    // cardDiv.append(imgDiv, cardBodyDiv, buttonAndQuantity);
-    // rowDiv.appendChild(cardDiv);
-    //End of Todays Best Dails For You! HTML
-
     //Start of setting IDs for buttons
 
     var column = document.createElement("div");
@@ -90,10 +30,10 @@ getData().then((data) => {
                             </div>
                         </div>
 
-                        <div class="card-body bg-light text-center">
+                        <div class="card-body contOfCardBody bg-light text-center">
                             <div class="mb-2">
                                 <h6 class="font-weight-semibold mb-2">
-                                    <a href="DetailsPage.html" class="text-default mb-2 nameOfProduct"
+                                    <a href="#" class="text-default mb-2 nameOfProduct"
                                         data-abc="true" id="${item.id}">${item.title}</a>
                                 </h6>
 
@@ -112,12 +52,14 @@ getData().then((data) => {
                     </div>
                 </div>
     `;
+
     rowDiv.appendChild(column);
   }
 
   //Add products To Cart
   var buttons = document.getElementsByClassName("cart");
   var login = document.getElementById("login");
+  var cartProduct;
 
   var addToCart = function () {
     var users = JSON.parse(localStorage.getItem("users"));
@@ -127,23 +69,19 @@ getData().then((data) => {
     productId = this.id;
     for (item of data) {
       if (productId == item.id) {
-        cartProduct = {
-          id: item.id,
-          title: item.title,
-          category: item.category,
-          price: item.price,
-          image: item.images[0],
-          quantity: 1,
-        };
+        item.quantity = 1;
+        cartProduct = item;
       }
     }
-    console.log(currentUser.id)
+    console.log(cartProduct);
+    console.log(item);
+    console.log(currentUser.email);
 
     if (localStorage.getItem("login") != null) {
-      console.log(currentUser.id)
+      console.log(currentUser.email);
       for (var user of users) {
         if (user.email == currentUser.email) {
-          console.log(user.id)
+          console.log(user.email);
           var result = user.cart.find((item) => item.id == productId);
           if (result == undefined) {
             user.cart.push(cartProduct);
@@ -159,8 +97,6 @@ getData().then((data) => {
       console.log("login please");
       $(login).modal("show");
     }
-
-    
   };
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", addToCart);
@@ -168,10 +104,7 @@ getData().then((data) => {
 });
 
 getData().then((data) => {
-  // console.log(item.category);
   var categ = [data[0].category];
-  // console.log(categ)
-  // console.log(typeof categ)
 
   for (var item of data) {
     if (!categ.includes(item.category)) {
@@ -179,76 +112,10 @@ getData().then((data) => {
     }
   }
 
-  // for (var i = 0; i < categ.length; i++) {
-  //   var cardDiv = document.createElement("div");
-  //   cardDiv.classList.add("card", "mb-3");
-
-  //   var rowCardDiv = document.createElement("div");
-  //   rowCardDiv.classList.add("row", "g-0");
-
-  //   imgColDiv = document.createElement("div");
-  //   imgColDiv.classList.add("col-md-4");
-
-  //   var img = document.createElement("img");
-  //   img.classList.add("img-fluid", "rounded-start");
-  //   img.setAttribute(
-  //     "src",
-  //     "https://cdn.shopify.com/s/files/1/0410/9608/5665/t/3/assets/pf-7115f8d1--cover-image-2.jpg?v=1614833751"
-  //   );
-  //   imgColDiv.append(img);
-
-  //   colDiv = document.createElement("div");
-  //   colDiv.classList.add("col-md-8");
-
-  //   cardBodyDiv = document.createElement("div");
-  //   cardBodyDiv.classList.add("card-body");
-
-  //   var header5 = document.createElement("h5");
-  //   header5.classList.add("card-title");
-  //   var header5Text = document.createTextNode(categ[i]);
-  //   header5.appendChild(header5Text);
-
-  //   cardBodyDiv.append(header5);
-  //   colDiv.append(cardBodyDiv);
-  //   rowCardDiv.append(imgColDiv, colDiv);
-  //   cardDiv.append(rowCardDiv);
-  //   catDiv.appendChild(cardDiv);
-  // }
 
   var names = document.getElementsByClassName("nameOfProduct");
 
-  var showDetails = function () {
-    var prodDetail = JSON.parse(localStorage.getItem("productDetails"));
-    console.log(prodDetail);
-    for (var item of allProducts) {
-      var currentId = this.id;
-      if (item.id == currentId) {
-        if (localStorage.getItem("productDetails") != null) {
-          console.log(item.id);
-          prodDetail.id = item.id;
-          prodDetail.title = item.title;
-          prodDetail.description = item.description;
-          prodDetail.price = item.price;
-          prodDetail.discountPercentage = item.discountPercentage;
-          prodDetail.rating = item.rating;
-          prodDetail.stock = item.stock;
-          prodDetail.brand = item.brand;
-          prodDetail.category = item.category;
-          prodDetail.thumbnail = item.thumbnail;
-          for (var i = 0; i < item.images.length; i++) {
-            prodDetail.images[i] = item.images[i];
-          }
-        }
-      }
-      console.log(currentId);
-    }
-    console.log(prodDetail);
-
-    localStorage.setItem("productDetails", JSON.stringify(prodDetail));
-    // window.location = "details.html";
-
-    console.log(productDetails);
-  };
+  
   for (var i = 0; i < names.length; i++) {
     names[i].addEventListener("click", showDetails);
   }
@@ -256,45 +123,63 @@ getData().then((data) => {
 
 let allProducts = JSON.parse(localStorage.getItem("allProducts"));
 
-var productDetails = {
-  id: "",
-  title: "",
-  description: "",
-  price: "",
-  discountPercentage: "",
-  rating: "",
-  stock: "",
-  brand: "",
-  category: "",
-  thumbnail: "",
-  images: [],
-};
+var productDetails = [];
+
 localStorage.setItem("productDetails", JSON.stringify(productDetails));
 
-// localStorage.clear();
+var categorydetails = [];
+localStorage.setItem("category", JSON.stringify(categorydetails));
+function categoryFunction(categoryName) {
+  var categoryItems = JSON.parse(localStorage.getItem("category"));
+  console.log(categoryItems);
+  var categg = allProducts.filter(function (el) {
+    console.log(el.category);
 
-// console.log(currentUser)
+    return el.category == categoryName;
+  });
+  console.log(categg);
+  localStorage.setItem("category", JSON.stringify(categg));
+}
 
-//       for (item of data) {
-//         if (productId == item.id) {
-//           cartProduct = {
-//             id: item.id,
-//             title: item.title,
-//             category: item.category,
-//             price: item.price,
-//             image: item.images[0],
-//             quantity: 1,
-//           };
-//           for(user of users){
-//           if (currentUser.email == user.email ) {
-//             for(var i =0;i<user.cart.length;i++){
-//               if(user.cart[i] !=cartProduct.id)
-//            { user.cart.push(cartProduct);}
 
-//             }
 
-//           } }
-// localStorage.setItem("users",JSON.stringify(users))
-//           console.log(user.cart)
-//         }
-//         }
+var showDetails = function () {
+  var currentUser = JSON.parse(localStorage.getItem("login"));
+  var users = JSON.parse(localStorage.getItem("users"));
+  var prodDetail = JSON.parse(localStorage.getItem("productDetails"));
+  var productId = this.id;
+  if (localStorage.getItem("login") != null) {
+    console.log("welcome");
+    for (var user of users) {
+      if (user.email == currentUser.email) {
+        console.log(user.email);
+        var result = user.cart.find((item) => item.id == productId);
+        if (result == undefined) {
+          console.log("its undefined");
+          for (var item of allProducts) {
+            if (item.id == productId) {
+              if (localStorage.getItem("productDetails") != null) {
+                prodDetail = item;
+              }
+            }
+          }
+          console.log(prodDetail);
+          localStorage.setItem("productDetails", JSON.stringify(prodDetail));
+        } else {
+          console.log("done");
+          console.log(result);
+          for (var item of allProducts) {
+            if (item.id == productId) {
+              if (localStorage.getItem("productDetails") != null) {
+                prodDetail = item;
+              }
+            }
+          }
+          localStorage.setItem("productDetails", JSON.stringify(prodDetail));
+        }
+      }
+    }
+  } else {
+    console.log("welcome unknown");
+  }
+};
