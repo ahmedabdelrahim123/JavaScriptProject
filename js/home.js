@@ -117,44 +117,67 @@ getData().then((data) => {
 
   //Add products To Cart
   var buttons = document.getElementsByClassName("cart");
+  var users = JSON.parse(localStorage.getItem("users"));
+  var addToCart = function () {
+    var cartProduct;
+    productId = this.id;
+    console.log(productId)
+    if (localStorage.getItem("login") != null) {
+      var currentUser = JSON.parse(localStorage.getItem("login"));
+      console.log(currentUser)
+      for (item of data) {
+        if (productId == item.id) {
+          cartProduct = {
+            id: item.id,
+            title: item.title,
+            category: item.category,
+            price: item.price,
+            image: item.images[0],
+            quantity: 1,
+          };
+          for(user of users){
+          if (currentUser.email == user.email ) {
+            user.cart.push(cartProduct);
+            
+          } 
+          localStorage.setItem("users",JSON.stringify(users))
+          console.log(user.cart)
+        }
+        }
+      }
+     
+    }
+    else{
+      var modal=document.createElement("div");
+      modal.innerHTML=`
+      <div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onc>Close</button>
+        <button type="button" class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+      `
+      rowDiv.appendChild(modal)
+    }
+    
+  };
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", addToCart);
+  }
+  
 
-  // var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  // var cart = [{ userID: currentUser.id, products: [] }];
-
-  // var addFunction = function () {
-  //   var cartProduct;
-  //   var currentId = this.id;
-  //   console.log(currentId);
-  //   for (var item of data) {
-  //     if (currentId == item.id) {
-  //       console.log(currentId);
-  //       cartProduct = {
-  //         id: item.id,
-  //         title: item.title,
-  //         category: item.category,
-  //         price: item.price,
-  //         image: item.images[1],
-  //         quantity: 1,
-  //       };
-  //       cart[0].products.push(cartProduct);
-  //     }
-  //   }
-  //   // console.log(typeof(cart.products))
-  //   console.log(cart);
-  //   console.log(cart[0].products);
-
-  //   localStorage.setItem("cart", JSON.stringify(cart));
-
-  //   // console.log(currentId);
-  //   document.getElementById(currentId).style.backgroundColor = "red";
-  //   document.getElementById(currentId).innerHTML = "Remove";
-  //   document.getElementById(currentId).style.borderColor = "red";
-  //   // document.getElementsByClassName("cart").style.backgroundColor = "red";
-  // };
-
-  // for (var i = 0; i < buttons.length; i++) {
-  //   buttons[i].addEventListener("click", addFunction);
-  // }
+  
 });
 
 getData().then((data) => {
@@ -169,85 +192,70 @@ getData().then((data) => {
     }
   }
 
-  for (var i = 0; i < categ.length; i++) {
-    var cardDiv = document.createElement("div");
-    cardDiv.classList.add("card", "mb-3");
+  // for (var i = 0; i < categ.length; i++) {
+  //   var cardDiv = document.createElement("div");
+  //   cardDiv.classList.add("card", "mb-3");
 
-    var rowCardDiv = document.createElement("div");
-    rowCardDiv.classList.add("row", "g-0");
+  //   var rowCardDiv = document.createElement("div");
+  //   rowCardDiv.classList.add("row", "g-0");
 
-    imgColDiv = document.createElement("div");
-    imgColDiv.classList.add("col-md-4");
+  //   imgColDiv = document.createElement("div");
+  //   imgColDiv.classList.add("col-md-4");
 
-    var img = document.createElement("img");
-    img.classList.add("img-fluid", "rounded-start");
-    img.setAttribute(
-      "src",
-      "https://cdn.shopify.com/s/files/1/0410/9608/5665/t/3/assets/pf-7115f8d1--cover-image-2.jpg?v=1614833751"
-    );
-    imgColDiv.append(img);
+  //   var img = document.createElement("img");
+  //   img.classList.add("img-fluid", "rounded-start");
+  //   img.setAttribute(
+  //     "src",
+  //     "https://cdn.shopify.com/s/files/1/0410/9608/5665/t/3/assets/pf-7115f8d1--cover-image-2.jpg?v=1614833751"
+  //   );
+  //   imgColDiv.append(img);
 
-    colDiv = document.createElement("div");
-    colDiv.classList.add("col-md-8");
+  //   colDiv = document.createElement("div");
+  //   colDiv.classList.add("col-md-8");
 
-    cardBodyDiv = document.createElement("div");
-    cardBodyDiv.classList.add("card-body");
+  //   cardBodyDiv = document.createElement("div");
+  //   cardBodyDiv.classList.add("card-body");
 
-    var header5 = document.createElement("h5");
-    header5.classList.add("card-title");
-    var header5Text = document.createTextNode(categ[i]);
-    header5.appendChild(header5Text);
+  //   var header5 = document.createElement("h5");
+  //   header5.classList.add("card-title");
+  //   var header5Text = document.createTextNode(categ[i]);
+  //   header5.appendChild(header5Text);
 
-    cardBodyDiv.append(header5);
-    colDiv.append(cardBodyDiv);
-    rowCardDiv.append(imgColDiv, colDiv);
-    cardDiv.append(rowCardDiv);
-    catDiv.appendChild(cardDiv);
-  }
-
-  
+  //   cardBodyDiv.append(header5);
+  //   colDiv.append(cardBodyDiv);
+  //   rowCardDiv.append(imgColDiv, colDiv);
+  //   cardDiv.append(rowCardDiv);
+  //   catDiv.appendChild(cardDiv);
+  // }
 
   var names = document.getElementsByClassName("nameOfProduct");
 
   var showDetails = function () {
-    // prodDetail = {
-    //   id: "",
-    //   title: "",
-    //   description: "",
-    //   price: "",
-    //   discountPercentage: "",
-    //   rating: "",
-    //   stock: "",
-    //   brand: "",
-    //   category: "",
-    //   thumbnail: "",
-    //   images: [],
-    // };
-    var prodDetail= JSON.parse(localStorage.getItem("productDetails"))
-    console.log(prodDetail)
+    var prodDetail = JSON.parse(localStorage.getItem("productDetails"));
+    console.log(prodDetail);
     for (var item of allProducts) {
       var currentId = this.id;
       if (item.id == currentId) {
-        if((localStorage.getItem("productDetails")!=null)){
-        console.log(item.id);
-        prodDetail.id = item.id;
-        prodDetail.title = item.title;
-        prodDetail.description = item.description;
-        prodDetail.price = item.price;
-        prodDetail.discountPercentage = item.discountPercentage;
-        prodDetail.rating = item.rating;
-        prodDetail.stock = item.stock;
-        prodDetail.brand = item.brand;
-        prodDetail.category = item.category;
-        prodDetail.thumbnail = item.thumbnail;
-        for (var i = 0; i < item.images.length; i++) {
-          prodDetail.images[i] = item.images[i];
+        if (localStorage.getItem("productDetails") != null) {
+          console.log(item.id);
+          prodDetail.id = item.id;
+          prodDetail.title = item.title;
+          prodDetail.description = item.description;
+          prodDetail.price = item.price;
+          prodDetail.discountPercentage = item.discountPercentage;
+          prodDetail.rating = item.rating;
+          prodDetail.stock = item.stock;
+          prodDetail.brand = item.brand;
+          prodDetail.category = item.category;
+          prodDetail.thumbnail = item.thumbnail;
+          for (var i = 0; i < item.images.length; i++) {
+            prodDetail.images[i] = item.images[i];
+          }
         }
       }
-    }
       console.log(currentId);
     }
-    console.log(prodDetail)
+    console.log(prodDetail);
 
     localStorage.setItem("productDetails", JSON.stringify(prodDetail));
     // window.location = "details.html";
@@ -275,3 +283,5 @@ var productDetails = {
   images: [],
 };
 localStorage.setItem("productDetails", JSON.stringify(productDetails));
+
+// localStorage.clear();
