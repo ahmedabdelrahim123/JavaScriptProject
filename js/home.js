@@ -65,7 +65,7 @@ getData().then((data) => {
     }
     console.log(cartProduct);
     console.log(item);
-    console.log(currentUser.email);
+    //console.log(currentUser.email);
 
     if (localStorage.getItem("login") != null) {
       console.log(currentUser.email);
