@@ -62,37 +62,53 @@ async function getnext(){
 async function chart() {
   var response = await fetch("https://dummyjson.com/products");
   var data = await response.json();
-  var product = localStorage.getItem("productDetails");
+  var item = localStorage.getItem("productDetails");
   var logineduser= localStorage.getItem("login");
-  product = JSON.parse(product);
+  var users= localStorage.getItem("users");
+  
+  item = JSON.parse(item);
+  logineduser = JSON.parse(logineduser);
+  users = JSON.parse(users);
+  // console.log(users[0].cart);
   console.log("login ls")
-  // console.log(product.cart);
-  var index = product.id - 1;
-  var temp = {
-    // id: data.products[index].id,
-    // brand: data.products[index].brand,
-    price: data.products[index].price,
-    title: data.products[index].title,
-    quantity: i
+
+   for (let j=0;j<users.length;j++)
+   {
+    if (users[j].email==logineduser.email){  
+  cartProduct = {
+    id: item.id,
+    title: item.title,
+    category: item.category,
+    price: item.price,
+    image: item.images,
+    quantity: i,
   };
+  users[j].cart.push(cartProduct)
+  
+  var temp= {
+    cart:users[j].cart,
+    username:users[j].username,
+    image:users[j].image,
+    password:users[j].password,
+    gender:users[j].gender,
+    email:users[j].email,
+    city:users[j].city,
+    address:users[j].address
+
+  }
   console.log(temp)
-  //  logineduser.cart.push(temp);
-   localStorage.setItem("login", JSON.stringify(logineduser.cart));
-   console.log(users)
+      localStorage.setItem("users", JSON.stringify(temp));
+      break;
+    }
+    
 
-  // if (product[index].quantity !=0)
-  // {item.push(product[index]);
-  // localStorage.setItem("users", JSON.stringify(item));
-  // console.log(users)}
-
-  // console.log("item");
-  // console.log(item);
-
-  const box = document.createElement("div");
-  box.setAttribute("class",`alert alert-success`);
-box.innerHTML = 'sucessfly added to chart';
-console.log(box);
-document.body.appendChild(box);
+   }
+//    console.log(temp)
+//   const box = document.getElementById("alertt");
+//   box.setAttribute("class",`alert alert-success`);
+// box.innerHTML = 'sucessfly added to chart';
+// // console.log(box);
+// document.body.appendChild(box);
 }
 
 async function back (){
@@ -119,9 +135,9 @@ async function displaydata() {
   // console.log(product);
 
   products = JSON.parse(product);
-  console.log(products);
+  // console.log(products);
   var index= (products.id)-1;
-  console.log(index);
+  // console.log(index);
 
 usersimg.setAttribute("src",data.products[index].images[0]);
 userstitle.innerHTML=`${data.products[index].title}`;
