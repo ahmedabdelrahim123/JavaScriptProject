@@ -1,48 +1,3 @@
-////////////////////////////////////////////////////////////////////////////adding items to local storage to test
-/* var users = [
-    {
-        id: 1,
-        fName: "mohamed",
-        lName: "ali",
-        address: "el-shatby",
-        city: "alex",
-        zip: 15552,
-        mobile: "012025887426",
-        email: "7amo@yahoo.com"
-    },
-    {
-        id: 2,
-        fName: "mayar",
-        lName: "hamed",
-        address: "el-asafra",
-        city: "tanta",
-        zip: 55977,
-        mobile: "015222987756",
-        email: "mayar@gmail.com"
-    },
-];
-localStorage.setItem("users", JSON.stringify(users));
-*/
-/* var current = 2;
-localStorage.setItem("current user", JSON.stringify(current));
-
-var cart = [
-    {
-        custId: 1,
-        products: [{ name: "sunglasses", price: 100, quantity: 2 },
-        { name: "pants", price: 250, quantity: 1 },
-        { name: "necklace", price: 20, quantity: 3 }]
-    },
-    {
-        custId: 2,
-        products: [{ name: "selfie stick", price: 80, quantity: 1 },
-        { name: "shirt", price: 150, quantity: 2 },
-        { name: "ring", price: 20, quantity: 5 }]
-    }
-];
-localStorage.setItem("cart", JSON.stringify(cart)); */
-////////////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////////////////////////fetching current user Data
 
 var cpns = [{ name: "Hey50", value: 50 }, { name: "Hey70", value: 70 }]
@@ -50,21 +5,15 @@ localStorage.setItem("coupons", JSON.stringify(cpns));
 
 var loggedin = JSON.parse(localStorage.getItem("login"));
 var users = JSON.parse(localStorage.getItem("users"));
+
 //////////////////////////////////////////////////////////////////////////////
-users.forEach(user => {
-    user.cart = [{ img: "../img/products/headphones.jpg", quantity: 2, name: "headphones", price: 100, color: "black" },
-    { img: "../img/products/necklace.jpg", quantity: 3, name: "necklace", price: 50, color: "gold" }];
-})
-localStorage.setItem("users", JSON.stringify(users));
+// users.forEach(user => {
+//     user.cart = [{ img: "../img/products/headphones.jpg", quantity: 2, name: "headphones", price: 100, color: "black" },
+//     { img: "../img/products/necklace.jpg", quantity: 3, name: "necklace", price: 50, color: "gold" }];
+// })
+// localStorage.setItem("users", JSON.stringify(users));
 
 ////////////////////////////////////////////////////////////////////////////
-
-//showing items
-
-// var cpnval = document.createTextNode(`- $${coupons[i].value}`);
-// couponVal.appendChild(cpnval);
-// var parent = document.querySelector(".parent");
-// parent.appendChild(couponVal);
 
 function showItems() {
     var parent = document.getElementById("parent");
@@ -231,6 +180,9 @@ function mobileCheck() {
         document.getElementById("mobileField").setAttribute("style", "display:none;");
         document.getElementById("showMob").removeAttribute("style");
     }
+    else{
+        mobile_flag++;
+    }
 }
 mobileCheck();
 
@@ -305,6 +257,18 @@ function applyCoupon() {
 
 }
 
+function redirect() {
+    location.href = "../src/cart.html";
+    users.forEach(user => {
+        if (user.email == loggedin.email) {
+            user.cart = [];
+            loggedin.cart = [];
+        }
+    })
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("login", JSON.stringify(loggedin));
+
+}
 //processing order
 function submit() {
 
@@ -365,6 +329,9 @@ function submit() {
     if (MOP === "cc") {
         if (cardHolder.value != "" && cvc.value != "" && cardSelected && email.value != "" && flag === 0 && mobile_flag == 0) {
             // console.log("good data");
+            setTimeout(() => {
+                redirect();
+            }, 2000);
             pop.setAttribute("style", "color:black;");
             pop.innerHTML = "Thank you for your payment!";
             img.setAttribute("src", "../img/paid2.png")
@@ -379,9 +346,13 @@ function submit() {
     }
     else {
         if (mobile_flag == 0) {
+            setTimeout(() => {
+                redirect();
+            }, 2000);
+            // console.log(mobile_flag)
             pop.setAttribute("style", "color:black;");
             pop.innerHTML = "Purchase confirmed!";
-            img.setAttribute("src", "../img/confirm.png")
+            img.setAttribute("src", "../img/confirm.png");
         }
         else {
             pop.setAttribute("style", "color:red;");
