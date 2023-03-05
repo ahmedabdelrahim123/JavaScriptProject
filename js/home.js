@@ -1,4 +1,5 @@
 var rowDiv = document.querySelector(".divOfBestSeller");
+console.log(rowDiv)
 var catDiv = document.querySelector(".divOfCategories");
 var categRow = document.querySelector(".categRow");
 
@@ -17,42 +18,31 @@ getData().then((data) => {
     //Start of setting IDs for buttons
 
     var column = document.createElement("div");
-    column.classList.add("col-md-4", "mt-2");
-
-    column.innerHTML = `
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-actions">
-                                <img
-                                    src="${item.images[0]}"
-                                    class="card-img img-fluid" width="96"
-                                    height="350" alt="">
-                            </div>
-                        </div>
-
-                        <div class="card-body contOfCardBody bg-light text-center">
-                            <div class="mb-2">
-                                <h6 class="font-weight-semibold mb-2">
-                                    <a href="#" class="text-default mb-2 nameOfProduct"
-                                        data-abc="true" id="${item.id}">${item.title}</a>
-                                </h6>
-
-                                <a href="#" class="text-muted" data-abc="true">${item.category}</a>
-                            </div>
-                            <h3 class="mb-0 font-weight-semibold">$${item.price} </h3>
-                            <div>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                            </div>                          
-                            <button type="button" class="btn bg-cart cart" id="${item.id}"><i
-                                    class="bi bi-cart-plus mr-2"></i> Add to
-                                cart</button>
-                    </div>
-                </div>
+    column.classList.add("col-md-4", "mt-2","mb-3", "swiper-slide", "card");
+    column.innerHTML = `   
+    <div class="card-body">
+    <div class="card-img-actions">
+        <img src="${item.images[0]}" class="card-img img-fluid" width="96" height="350" alt="">
+    </div>
+</div>
+<div class="card-body contOfCardBody bg-light text-center">
+    <div class="mb-2">
+        <h6 class="font-weight-semibold mb-2">
+            <a href="#" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
+        </h6>
+        <a href="#" class="text-muted" data-abc="true">${item.category}</a>
+    </div>
+    <h3 class="mb-0 font-weight-semibold">$${item.price} </h3>
+    <div>
+        <i class="fa fa-star star"></i>
+        <i class="fa fa-star star"></i>
+        <i class="fa fa-star star"></i>
+        <i class="fa fa-star star"></i>
+    </div>
+    <button type="button" class="btn bg-cart cart my-4" id="${item.id}"><i class="bi bi-cart-plus mr-2"></i> Add to
+        cart</button>
+</div>          
     `;
-
     rowDiv.appendChild(column);
   }
 
@@ -111,11 +101,7 @@ getData().then((data) => {
       categ.push(item.category);
     }
   }
-
-
   var names = document.getElementsByClassName("nameOfProduct");
-
-  
   for (var i = 0; i < names.length; i++) {
     names[i].addEventListener("click", showDetails);
   }
