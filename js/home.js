@@ -20,12 +20,11 @@ getData().then((data) => {
     var column = document.createElement("div");
     column.classList.add("col-md-4", "mt-2","mb-3", "swiper-slide", "card");
     column.innerHTML = `   
-<div class="card-body">
+    <div class="card-body">
     <div class="card-img-actions">
         <img src="${item.images[0]}" class="card-img img-fluid" width="96" height="350" alt="">
     </div>
 </div>
-
 <div class="card-body contOfCardBody bg-light text-center">
     <div class="mb-2">
         <h6 class="font-weight-semibold mb-2">
@@ -44,7 +43,6 @@ getData().then((data) => {
         cart</button>
 </div>          
     `;
-    console.log(column)
     rowDiv.appendChild(column);
   }
 
