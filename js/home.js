@@ -75,7 +75,7 @@ getData().then((data) => {
     }
     console.log(cartProduct);
     console.log(item);
-    console.log(currentUser.email);
+   //  console.log(currentUser.email);
 
     if (localStorage.getItem("login") != null) {
       console.log(currentUser.email);
@@ -112,10 +112,8 @@ getData().then((data) => {
     }
   }
 
-
   var names = document.getElementsByClassName("nameOfProduct");
 
-  
   for (var i = 0; i < names.length; i++) {
     names[i].addEventListener("click", showDetails);
   }
@@ -142,44 +140,26 @@ function categoryFunction(categoryName) {
 }
 
 
-
+var users = JSON.parse(localStorage.getItem("users"));
+var currentUser = JSON.parse(localStorage.getItem("login"));
+console.log(currentUser);
 var showDetails = function () {
-  var currentUser = JSON.parse(localStorage.getItem("login"));
-  var users = JSON.parse(localStorage.getItem("users"));
-  var prodDetail = JSON.parse(localStorage.getItem("productDetails"));
-  var productId = this.id;
+  var displayedProduct = JSON.parse(localStorage.getItem("productDetails"));
+  var currentProductId = this.id;
+  console.log(currentUser.email);
   if (localStorage.getItem("login") != null) {
-    console.log("welcome");
-    for (var user of users) {
-      if (user.email == currentUser.email) {
-        console.log(user.email);
-        var result = user.cart.find((item) => item.id == productId);
-        if (result == undefined) {
-          console.log("its undefined");
-          for (var item of allProducts) {
-            if (item.id == productId) {
-              if (localStorage.getItem("productDetails") != null) {
-                prodDetail = item;
-              }
-            }
-          }
-          console.log(prodDetail);
-          localStorage.setItem("productDetails", JSON.stringify(prodDetail));
-        } else {
-          console.log("done");
-          console.log(result);
-          for (var item of allProducts) {
-            if (item.id == productId) {
-              if (localStorage.getItem("productDetails") != null) {
-                prodDetail = item;
-              }
-            }
-          }
-          localStorage.setItem("productDetails", JSON.stringify(prodDetail));
-        }
-      }
-    }
-  } else {
-    console.log("welcome unknown");
+    var onlineUser = users.find((item) => item.email == currentUser.email);
+    var cartProduct = onlineUser.cart.find(
+      (prod) => prod.id == currentProductId
+    )
+      ? onlineUser.cart.find((prod) => prod.id == currentProductId)
+      : allProducts.find((item) => (item.id = currentProductId));
+    console.log(cartProduct);
+    localStorage.setItem("productDetails", JSON.stringify(cartProduct));
+  }
+  else {
+    displayedProduct = allProducts.find((item) => (item.id = currentProductId));
+    console.log(displayedProduct);
+    localStorage.setItem("productDetails", JSON.stringify(displayedProduct));
   }
 };
