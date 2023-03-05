@@ -117,67 +117,54 @@ getData().then((data) => {
 
   //Add products To Cart
   var buttons = document.getElementsByClassName("cart");
-  var users = JSON.parse(localStorage.getItem("users"));
+  var login = document.getElementById("login");
+
   var addToCart = function () {
-    var cartProduct;
+    var users = JSON.parse(localStorage.getItem("users"));
+    var currentUser = JSON.parse(localStorage.getItem("login"));
+    console.log(currentUser);
+    console.log(users);
     productId = this.id;
-    console.log(productId)
+    for (item of data) {
+      if (productId == item.id) {
+        cartProduct = {
+          id: item.id,
+          title: item.title,
+          category: item.category,
+          price: item.price,
+          image: item.images[0],
+          quantity: 1,
+        };
+      }
+    }
+    console.log(currentUser.id)
+
     if (localStorage.getItem("login") != null) {
-      var currentUser = JSON.parse(localStorage.getItem("login"));
-      console.log(currentUser)
-      for (item of data) {
-        if (productId == item.id) {
-          cartProduct = {
-            id: item.id,
-            title: item.title,
-            category: item.category,
-            price: item.price,
-            image: item.images[0],
-            quantity: 1,
-          };
-          for(user of users){
-          if (currentUser.email == user.email ) {
+      console.log(currentUser.id)
+      for (var user of users) {
+        if (user.email == currentUser.email) {
+          console.log(user.id)
+          var result = user.cart.find((item) => item.id == productId);
+          if (result == undefined) {
             user.cart.push(cartProduct);
-            
-          } 
-          localStorage.setItem("users",JSON.stringify(users))
-          console.log(user.cart)
-        }
+            localStorage.setItem("users", JSON.stringify(users));
+            console.log(user.cart);
+          } else {
+            console.log("already added");
+            console.log(user.cart);
+          }
         }
       }
-     
+    } else {
+      console.log("login please");
+      $(login).modal("show");
     }
-    else{
-      var modal=document.createElement("div");
-      modal.innerHTML=`
-      <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onc>Close</button>
-        <button type="button" class="btn btn-primary">Login</button>
-      </div>
-    </div>
-  </div>
-</div>
-      `
-      rowDiv.appendChild(modal)
-    }
+
     
   };
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", addToCart);
   }
-  
-
-  
 });
 
 getData().then((data) => {
@@ -285,3 +272,29 @@ var productDetails = {
 localStorage.setItem("productDetails", JSON.stringify(productDetails));
 
 // localStorage.clear();
+
+// console.log(currentUser)
+
+//       for (item of data) {
+//         if (productId == item.id) {
+//           cartProduct = {
+//             id: item.id,
+//             title: item.title,
+//             category: item.category,
+//             price: item.price,
+//             image: item.images[0],
+//             quantity: 1,
+//           };
+//           for(user of users){
+//           if (currentUser.email == user.email ) {
+//             for(var i =0;i<user.cart.length;i++){
+//               if(user.cart[i] !=cartProduct.id)
+//            { user.cart.push(cartProduct);}
+
+//             }
+
+//           } }
+// localStorage.setItem("users",JSON.stringify(users))
+//           console.log(user.cart)
+//         }
+//         }
