@@ -12,7 +12,6 @@ async function getData() {
 
 getData().then((data) => {
   localStorage.setItem("allProducts", JSON.stringify(data));
-
   for (var item of data) {
     //Start of setting IDs for buttons
 
@@ -27,7 +26,7 @@ getData().then((data) => {
 <div class="card-body contOfCardBody bg-light text-center">
     <div class="mb-2">
         <h6 class="font-weight-semibold mb-2">
-            <a href="DetailsPage.html" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
+            <a href="#" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
         </h6>
         <a href="#" class="text-muted" data-abc="true">${item.category}</a>
     </div>
@@ -64,8 +63,10 @@ getData().then((data) => {
       for (var user of users) {
         if (user.email == currentUser.email) {
           var result = user.cart.find((item) => item.id == productId);
+          //  console.log(result)
           if (result == undefined) {
             user.cart.push(cartProduct);
+            console.log(cartProduct);
             localStorage.setItem("users", JSON.stringify(users));
           } else {
           }
@@ -88,6 +89,7 @@ getData().then((data) => {
       categ.push(item.category);
     }
   }
+  localStorage.setItem("categories", JSON.stringify(categ));
 
   var names = document.getElementsByClassName("nameOfProduct");
 
@@ -108,27 +110,47 @@ function categoryFunction(categoryName) {
   var categoryItems = JSON.parse(localStorage.getItem("category"));
   console.log(categoryItems);
   var categg = allProducts.filter(function (el) {
-
     return el.category == categoryName;
   });
   localStorage.setItem("category", JSON.stringify(categg));
 }
 
-var users = JSON.parse(localStorage.getItem("users"));
-var currentUser = JSON.parse(localStorage.getItem("login"));
 var showDetails = function () {
-  var displayedProduct = JSON.parse(localStorage.getItem("productDetails"));
-  var currentProductId = this.id;
+  var currentUser = JSON.parse(localStorage.getItem("login"));
+  var users = JSON.parse(localStorage.getItem("users"));
+  var allproducts = JSON.parse(localStorage.getItem("allProducts"));
+  //var prodDetail = JSON.parse(localStorage.getItem("productDetails"));
+  var productId = this.id;
   if (localStorage.getItem("login") != null) {
-    var onlineUser = users.find((item) => item.email == currentUser.email);
-    var cartProduct = onlineUser.cart.find(
-      (prod) => prod.id == currentProductId
-    )
-      ? onlineUser.cart.find((prod) => prod.id == currentProductId)
-      : allProducts.find((item) => (item.id = currentProductId));
-    localStorage.setItem("productDetails", JSON.stringify(cartProduct));
+    var user = users.find((user) => user.email == currentUser.email);
+    if (user) {
+      var userCart = user.cart.find((item) => item.id == productId);
+      if (userCart) {
+        // exist in user cart
+        localStorage.setItem("productDetails", JSON.stringify(userCart));
+      } else {
+        //not add to cart before
+        userCart = allproducts.find((item) => item.id == productId);
+        localStorage.setItem("productDetails", JSON.stringify(userCart));
+      }
+    }
   } else {
-    displayedProduct = allProducts.find((item) => (item.id = currentProductId));
-    localStorage.setItem("productDetails", JSON.stringify(displayedProduct));
+    var show = allproducts.find((item) => item.id == productId);
+    localStorage.setItem("productDetails", JSON.stringify(show));
+    console.log("welcome unknown");
   }
 };
+
+function findItemFromAllProducts() {
+  currentProductId = this.id;
+  var productss;
+  for (var item of allProducts) {
+    if (item.id == currentProductId) {
+      productss = item;
+    }
+  }
+  return productss;
+}
+var categories = localStorage.getItem("categories");
+
+// localStorage.clear();
