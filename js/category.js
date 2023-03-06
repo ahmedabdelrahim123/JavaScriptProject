@@ -11,18 +11,18 @@ var all_data = []
 var data_filtered = []
 
 
-let getCategory = window.localStorage.getItem("category")
-console.log(getCategory)
-fetchData().then(data => {
-    all_data = data
+let getCategory =  JSON.parse(localStorage.getItem("category"))
 
-    if (getCategory) {
-        checked_types.push(getCategory)
+function getData(){
+    all_data = JSON.parse(localStorage.getItem("allProducts"))
+    if (getCategory == null || getCategory == [] ) {
         showData(checked_types)
     } else {
+        checked_types.push(getCategory)
         showData(checked_types)
     }
-})
+}
+getData()
 
 
 lists.forEach(list => {
@@ -39,9 +39,7 @@ lists.forEach(list => {
 
 
 function showData(types) {
-    console.log("entered");
     if (types.length == 0) { //All Data
-        data_filtered = []
         data_filtered = all_data
     } else { // filtered data
         data_filtered = []
@@ -53,7 +51,6 @@ function showData(types) {
             })
         }
     }
-    console.log(data_filtered);
     updateHTML(data_filtered)
 }
 
