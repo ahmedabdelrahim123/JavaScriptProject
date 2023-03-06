@@ -117,7 +117,7 @@ async function displaydata() {
   products = JSON.parse(product);
   // console.log(products);
   var index= (products.id)-1;
-  // console.log(index);
+  console.log(index);
 
 usersimg.setAttribute("src",data.products[index].images[0]);
 userstitle.innerHTML=`${data.products[index].title}`;
