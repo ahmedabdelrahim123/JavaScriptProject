@@ -1,5 +1,5 @@
 var rowDiv = document.querySelector(".divOfBestSeller");
-console.log(rowDiv)
+console.log(rowDiv);
 var catDiv = document.querySelector(".divOfCategories");
 var categRow = document.querySelector(".categRow");
 
@@ -18,7 +18,7 @@ getData().then((data) => {
     //Start of setting IDs for buttons
 
     var column = document.createElement("div");
-    column.classList.add("col-md-4", "mt-2","mb-3", "swiper-slide", "card");
+    column.classList.add("col-md-4", "mt-2", "mb-3", "swiper-slide", "card");
     column.innerHTML = `   
     <div class="card-body">
     <div class="card-img-actions">
@@ -28,7 +28,7 @@ getData().then((data) => {
 <div class="card-body contOfCardBody bg-light text-center">
     <div class="mb-2">
         <h6 class="font-weight-semibold mb-2">
-            <a href="#" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
+            <a href="DetailsPage.html" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
         </h6>
         <a href="#" class="text-muted" data-abc="true">${item.category}</a>
     </div>
@@ -65,7 +65,7 @@ getData().then((data) => {
     }
     console.log(cartProduct);
     console.log(item);
-   //  console.log(currentUser.email);
+    //  console.log(currentUser.email);
 
     if (localStorage.getItem("login") != null) {
       console.log(currentUser.email);
@@ -102,10 +102,8 @@ getData().then((data) => {
     }
   }
 
-
   var names = document.getElementsByClassName("nameOfProduct");
 
-  
   for (var i = 0; i < names.length; i++) {
     names[i].addEventListener("click", showDetails);
   }
@@ -131,7 +129,6 @@ function categoryFunction(categoryName) {
   localStorage.setItem("category", JSON.stringify(categg));
 }
 
-
 var users = JSON.parse(localStorage.getItem("users"));
 var currentUser = JSON.parse(localStorage.getItem("login"));
 console.log(currentUser);
@@ -148,8 +145,7 @@ var showDetails = function () {
       : allProducts.find((item) => (item.id = currentProductId));
     console.log(cartProduct);
     localStorage.setItem("productDetails", JSON.stringify(cartProduct));
-  }
-  else {
+  } else {
     displayedProduct = allProducts.find((item) => (item.id = currentProductId));
     console.log(displayedProduct);
     localStorage.setItem("productDetails", JSON.stringify(displayedProduct));
