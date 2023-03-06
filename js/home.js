@@ -20,7 +20,7 @@ getData().then((data) => {
     column.innerHTML = `   
     <div class="card-body">
     <div class="card-img-actions">
-        <img src="${item.images[0]}" class="card-img img-fluid" width="96" height="350" alt="">
+        <img src="${item.images[0]}" class="card-img img-fluid" alt="">
     </div>
 </div>
 <div class="card-body contOfCardBody bg-light text-center">
@@ -44,8 +44,6 @@ getData().then((data) => {
     rowDiv.appendChild(column);
   }
   
-  
-
   //Add products To Cart
   var buttons = document.getElementsByClassName("cart");
   var login = document.getElementById("login");
@@ -54,7 +52,7 @@ getData().then((data) => {
   var addToCart = function () {
     var users = JSON.parse(localStorage.getItem("users"));
     var currentUser = JSON.parse(localStorage.getItem("login"));
-    productId = this.id;
+    var productId = this.id;
     for (item of data) {
       if (productId == item.id) {
         item.quantity = 1;
@@ -77,6 +75,7 @@ getData().then((data) => {
     } else {
       $(login).modal("show");
     }
+    this.disabled = true;
   };
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", addToCart);
@@ -85,14 +84,12 @@ getData().then((data) => {
 
 getData().then((data) => {
   var categ = [data[0].category];
-
   for (var item of data) {
     if (!categ.includes(item.category)) {
       categ.push(item.category);
     }
   }
   localStorage.setItem("categories", JSON.stringify(categ));
-
   var names = document.getElementsByClassName("nameOfProduct");
 
   for (var i = 0; i < names.length; i++) {
@@ -108,7 +105,7 @@ localStorage.setItem("productDetails", JSON.stringify(productDetails));
 
 var categorydetails = [];
 function categoryFunction(categoryName) {
-  result = categoryName;
+  var result = categoryName;
   console.log(result);
   categorydetails = [result];
   console.log(categorydetails);
