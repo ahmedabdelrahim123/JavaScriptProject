@@ -5,6 +5,13 @@
         font-family: 'Calibri', 'Trebuchet MS', sans-serif
     }
 
+    h3,
+    h4 {
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 25px;
+    }
+
     #arrow {
         display: flex;
         align-items: center;
@@ -13,8 +20,14 @@
         width: 400px;
     }
 
-    i {
+    .icon {
         color: black;
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        text-decoration: none;
     }
 
     #backtocart {
@@ -24,9 +37,6 @@
     }
 
     .container {
-        /* margin-top: 80px; */
-        /* box-shadow: 0px 0px 5px 2px; */
-        width: 1400px;
         display: flex;
         flex-direction: row;
         border: none;
@@ -35,57 +45,113 @@
     #col1 {
         display: flex;
         flex-direction: column;
-        align-content: space-between;
+        align-items: space-between;
         margin: 15px;
+
+    }
+
+    .saveBTN {
+        border: none;
+        border-radius: 20px;
+        padding: 10px;
+        margin-left: 10px;
+        background-color: #013d29;
+        color: white;
+        /* font-size: small; */
+        width: 80px;
+    }
+
+    #col2 {
+        /* display: flex;
+        flex-direction: column;
+        width: fit-content; */
+
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 15px;
+    }
+
+    @media only screen and (min-width: 600px) {
+        #col2 {
+            width: 65%;
+        }
+    }
+
+    @media only screen and (min-width: 1000px) {
+        #col2 {
+            width: 100%;
+        }
     }
 
     .review-box {
         border: 1px solid lightgray;
-        border-radius: 10px;
-        width: 750px;
+        /* width: 750px; */
         padding: 20px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    .delivery {
         margin: 20px;
     }
 
-    #Item-Color {
-        padding-left: 10px;
-
+    .review-box2 {
+        padding: 20px;
+        /* padding-left: 20px;
+        margin-bottom: 20px;
+        margin-top: 20px; */
+        border-radius: 10px;
+        border: 1px solid lightgray;
     }
 
-    h3,
-    h4 {
-        font-weight: bold;
-        padding: 10px;
-        border-radius: 25px;
+    .mobileField {
+        margin-left: 40px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+
     }
 
     .item-card {
+        border-radius: 15px;
         border: none;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-    }
-
-    img {
-        width: 150px;
-        padding: 25px;
-    }
-
-    #qty {
-        margin-left: 300px;
-    }
-
-    .cards {
-        width: 100px;
+        padding: 10px;
         margin-top: 20px;
     }
 
-    #col2 {
-        border: 1px solid lightgray;
-        border-radius: 10px;
-        width: 450px;
-        padding: 20px;
-        margin: 15px;
+    .image {
+        display: flex;
+        width: 150px;
+        border-radius: 15px;
+    }
+
+    .mainInfoDiv {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 20px;
+    }
+
+    .secInfoDiv {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .extra {
+        display: flex;
+        align-items: center;
+    }
+
+
+    .card-type {
+        width: 80px;
+        padding: 10px;
     }
 
     hr {
@@ -119,7 +185,8 @@
     }
 
     .cpnbtn:hover,
-    .large-btn:hover {
+    .large-btn:hover,
+    .saveBTN:hover {
         background-color: #013d29d7;
         color: white;
     }
@@ -136,12 +203,11 @@
         padding: 5px;
     }
 
-    .wide-box {
-        padding: 10px;
-        border: 1px solid lightgray;
-        border-radius: 5px;
-        width: 400px;
+    .radio {
+        padding-bottom: 20px;
     }
+
+
 
     .form-row {
         display: flex;
@@ -157,7 +223,14 @@
     }
 
     .delivery-info {
+        padding-top: 10px;
+    }
+
+    .wide-box {
         padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        width: 400px;
     }
 
     .info-box {
@@ -180,13 +253,15 @@
         border-radius: 5px;
         width: 150px;
     }
-    .exp-box{
+
+    .exp-box {
         border: 1px solid lightgray;
         border-radius: 5px;
         width: 70px;
         padding: 10px;
 
     }
+
     .mini-row {
         display: flex;
         flex-direction: row;
@@ -260,4 +335,10 @@
     .total {
         font-weight: bold;
         font-size: large;
+    }
+
+    table {
+        display: flex;
+        padding: 15px;
+        width: fit-content;
     }
