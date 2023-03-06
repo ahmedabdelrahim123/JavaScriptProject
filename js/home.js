@@ -1,5 +1,4 @@
 var rowDiv = document.querySelector(".divOfBestSeller");
-console.log(rowDiv);
 var catDiv = document.querySelector(".divOfCategories");
 var categRow = document.querySelector(".categRow");
 
@@ -54,8 +53,6 @@ getData().then((data) => {
   var addToCart = function () {
     var users = JSON.parse(localStorage.getItem("users"));
     var currentUser = JSON.parse(localStorage.getItem("login"));
-    console.log(currentUser);
-    console.log(users);
     productId = this.id;
     for (item of data) {
       if (productId == item.id) {
@@ -63,28 +60,18 @@ getData().then((data) => {
         cartProduct = item;
       }
     }
-    console.log(cartProduct);
-    console.log(item);
-    //  console.log(currentUser.email);
-
     if (localStorage.getItem("login") != null) {
-      console.log(currentUser.email);
       for (var user of users) {
         if (user.email == currentUser.email) {
-          console.log(user.email);
           var result = user.cart.find((item) => item.id == productId);
           if (result == undefined) {
             user.cart.push(cartProduct);
             localStorage.setItem("users", JSON.stringify(users));
-            console.log(user.cart);
           } else {
-            console.log("already added");
-            console.log(user.cart);
           }
         }
       }
     } else {
-      console.log("login please");
       $(login).modal("show");
     }
   };
@@ -121,21 +108,17 @@ function categoryFunction(categoryName) {
   var categoryItems = JSON.parse(localStorage.getItem("category"));
   console.log(categoryItems);
   var categg = allProducts.filter(function (el) {
-    console.log(el.category);
 
     return el.category == categoryName;
   });
-  console.log(categg);
   localStorage.setItem("category", JSON.stringify(categg));
 }
 
 var users = JSON.parse(localStorage.getItem("users"));
 var currentUser = JSON.parse(localStorage.getItem("login"));
-console.log(currentUser);
 var showDetails = function () {
   var displayedProduct = JSON.parse(localStorage.getItem("productDetails"));
   var currentProductId = this.id;
-  console.log(currentUser.email);
   if (localStorage.getItem("login") != null) {
     var onlineUser = users.find((item) => item.email == currentUser.email);
     var cartProduct = onlineUser.cart.find(
@@ -143,11 +126,9 @@ var showDetails = function () {
     )
       ? onlineUser.cart.find((prod) => prod.id == currentProductId)
       : allProducts.find((item) => (item.id = currentProductId));
-    console.log(cartProduct);
     localStorage.setItem("productDetails", JSON.stringify(cartProduct));
   } else {
     displayedProduct = allProducts.find((item) => (item.id = currentProductId));
-    console.log(displayedProduct);
     localStorage.setItem("productDetails", JSON.stringify(displayedProduct));
   }
 };
