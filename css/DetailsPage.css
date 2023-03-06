@@ -2,10 +2,13 @@
  height: 300px;
  width: 400px;
 }
+#specify_quantity{
+    display: none;
+}
 
-/* .row{
-    
-} */
+#login{
+    display: none;
+}
 .add_to_chart{
     width: 200px;
     color:antiquewhite;
