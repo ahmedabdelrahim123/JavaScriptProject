@@ -1,5 +1,4 @@
 var rowDiv = document.querySelector(".divOfBestSeller");
-console.log(rowDiv)
 var catDiv = document.querySelector(".divOfCategories");
 var categRow = document.querySelector(".categRow");
 
@@ -13,12 +12,11 @@ async function getData() {
 
 getData().then((data) => {
   localStorage.setItem("allProducts", JSON.stringify(data));
-
   for (var item of data) {
     //Start of setting IDs for buttons
 
     var column = document.createElement("div");
-    column.classList.add("col-md-4", "mt-2","mb-3", "swiper-slide", "card");
+    column.classList.add("col-md-4", "mt-2", "mb-3", "swiper-slide", "card");
     column.innerHTML = `   
     <div class="card-body">
     <div class="card-img-actions">
@@ -54,37 +52,27 @@ getData().then((data) => {
   var addToCart = function () {
     var users = JSON.parse(localStorage.getItem("users"));
     var currentUser = JSON.parse(localStorage.getItem("login"));
-    console.log(currentUser);
-    console.log(users);
-    productId = this.id;
+    var productId = this.id;
     for (item of data) {
       if (productId == item.id) {
         item.quantity = 1;
         cartProduct = item;
       }
     }
-    console.log(cartProduct);
-    console.log(item);
-    //console.log(currentUser.email);
-
     if (localStorage.getItem("login") != null) {
-      console.log(currentUser.email);
       for (var user of users) {
         if (user.email == currentUser.email) {
-          console.log(user.email);
           var result = user.cart.find((item) => item.id == productId);
+          //  console.log(result)
           if (result == undefined) {
             user.cart.push(cartProduct);
+            console.log(cartProduct);
             localStorage.setItem("users", JSON.stringify(users));
-            console.log(user.cart);
           } else {
-            console.log("already added");
-            console.log(user.cart);
           }
         }
       }
     } else {
-      console.log("login please");
       $(login).modal("show");
     }
   };
@@ -101,7 +89,10 @@ getData().then((data) => {
       categ.push(item.category);
     }
   }
+  localStorage.setItem("categories", JSON.stringify(categ));
+
   var names = document.getElementsByClassName("nameOfProduct");
+
   for (var i = 0; i < names.length; i++) {
     names[i].addEventListener("click", showDetails);
   }
@@ -119,53 +110,47 @@ function categoryFunction(categoryName) {
   var categoryItems = JSON.parse(localStorage.getItem("category"));
   console.log(categoryItems);
   var categg = allProducts.filter(function (el) {
-    console.log(el.category);
-
     return el.category == categoryName;
   });
-  console.log(categg);
   localStorage.setItem("category", JSON.stringify(categg));
 }
-
-
 
 var showDetails = function () {
   var currentUser = JSON.parse(localStorage.getItem("login"));
   var users = JSON.parse(localStorage.getItem("users"));
-  var prodDetail = JSON.parse(localStorage.getItem("productDetails"));
+  var allproducts = JSON.parse(localStorage.getItem("allProducts"));
+  //var prodDetail = JSON.parse(localStorage.getItem("productDetails"));
   var productId = this.id;
   if (localStorage.getItem("login") != null) {
-    console.log("welcome");
-    for (var user of users) {
-      if (user.email == currentUser.email) {
-        console.log(user.email);
-        var result = user.cart.find((item) => item.id == productId);
-        if (result == undefined) {
-          console.log("its undefined");
-          for (var item of allProducts) {
-            if (item.id == productId) {
-              if (localStorage.getItem("productDetails") != null) {
-                prodDetail = item;
-              }
-            }
-          }
-          console.log(prodDetail);
-          localStorage.setItem("productDetails", JSON.stringify(prodDetail));
-        } else {
-          console.log("done");
-          console.log(result);
-          for (var item of allProducts) {
-            if (item.id == productId) {
-              if (localStorage.getItem("productDetails") != null) {
-                prodDetail = item;
-              }
-            }
-          }
-          localStorage.setItem("productDetails", JSON.stringify(prodDetail));
-        }
+    var user = users.find((user) => user.email == currentUser.email);
+    if (user) {
+      var userCart = user.cart.find((item) => item.id == productId);
+      if (userCart) {
+        // exist in user cart
+        localStorage.setItem("productDetails", JSON.stringify(userCart));
+      } else {
+        //not add to cart before
+        userCart = allproducts.find((item) => item.id == productId);
+        localStorage.setItem("productDetails", JSON.stringify(userCart));
       }
     }
   } else {
-    console.log("welcome unknown");
+    var show = allproducts.find((item) => item.id == productId);
+    localStorage.setItem("productDetails", JSON.stringify(show));
+    console.log("welcome unknown");
   }
 };
+
+function findItemFromAllProducts() {
+  currentProductId = this.id;
+  var productss;
+  for (var item of allProducts) {
+    if (item.id == currentProductId) {
+      productss = item;
+    }
+  }
+  return productss;
+}
+var categories = localStorage.getItem("categories");
+
+// localStorage.clear();
