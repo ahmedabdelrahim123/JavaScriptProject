@@ -26,7 +26,7 @@ getData().then((data) => {
 <div class="card-body contOfCardBody bg-light text-center">
     <div class="mb-2">
         <h6 class="font-weight-semibold mb-2">
-            <a href="/src/DetailsPage.html" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
+            <a href="/JavaScriptProject/src/DetailsPage.html" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
         </h6>
         <a href="#" class="text-muted cats" data-abc="true" onClick="categoryFunction(${item.category})" >${item.category}</a>
     </div>

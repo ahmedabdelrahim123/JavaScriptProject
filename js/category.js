@@ -20,6 +20,7 @@ function getData(){
     } else {
         checked_types.push(getCategory)
         showData(checked_types)
+        window.localStorage.removeItem("category")
     }
 }
 getData()
