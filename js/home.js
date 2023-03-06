@@ -12,7 +12,6 @@ async function getData() {
 
 getData().then((data) => {
   localStorage.setItem("allProducts", JSON.stringify(data));
-
   for (var item of data) {
     //Start of setting IDs for buttons
 
@@ -21,15 +20,15 @@ getData().then((data) => {
     column.innerHTML = `   
     <div class="card-body">
     <div class="card-img-actions">
-        <img src="${item.images[0]}" class="card-img img-fluid" width="96" height="350" alt="">
+        <img src="${item.images[0]}" class="card-img img-fluid" alt="">
     </div>
 </div>
 <div class="card-body contOfCardBody bg-light text-center">
     <div class="mb-2">
         <h6 class="font-weight-semibold mb-2">
-            <a href="DetailsPage.html" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
+            <a href="/src/DetailsPage.html" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
         </h6>
-        <a href="#" class="text-muted" data-abc="true">${item.category}</a>
+        <a href="#" class="text-muted cats" data-abc="true" onClick="categoryFunction(${item.category})" >${item.category}</a>
     </div>
     <h3 class="mb-0 font-weight-semibold">$${item.price} </h3>
     <div>
@@ -44,7 +43,7 @@ getData().then((data) => {
     `;
     rowDiv.appendChild(column);
   }
-
+  
   //Add products To Cart
   var buttons = document.getElementsByClassName("cart");
   var login = document.getElementById("login");
@@ -53,7 +52,7 @@ getData().then((data) => {
   var addToCart = function () {
     var users = JSON.parse(localStorage.getItem("users"));
     var currentUser = JSON.parse(localStorage.getItem("login"));
-    productId = this.id;
+    var productId = this.id;
     for (item of data) {
       if (productId == item.id) {
         item.quantity = 1;
@@ -64,8 +63,10 @@ getData().then((data) => {
       for (var user of users) {
         if (user.email == currentUser.email) {
           var result = user.cart.find((item) => item.id == productId);
+          //  console.log(result)
           if (result == undefined) {
             user.cart.push(cartProduct);
+            console.log(cartProduct);
             localStorage.setItem("users", JSON.stringify(users));
           } else {
           }
@@ -74,6 +75,7 @@ getData().then((data) => {
     } else {
       $(login).modal("show");
     }
+    this.disabled = true;
   };
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", addToCart);
@@ -82,13 +84,12 @@ getData().then((data) => {
 
 getData().then((data) => {
   var categ = [data[0].category];
-
   for (var item of data) {
     if (!categ.includes(item.category)) {
       categ.push(item.category);
     }
   }
-
+  localStorage.setItem("categories", JSON.stringify(categ));
   var names = document.getElementsByClassName("nameOfProduct");
 
   for (var i = 0; i < names.length; i++) {
@@ -103,32 +104,40 @@ var productDetails = [];
 localStorage.setItem("productDetails", JSON.stringify(productDetails));
 
 var categorydetails = [];
-localStorage.setItem("category", JSON.stringify(categorydetails));
 function categoryFunction(categoryName) {
-  var categoryItems = JSON.parse(localStorage.getItem("category"));
-  console.log(categoryItems);
-  var categg = allProducts.filter(function (el) {
-
-    return el.category == categoryName;
-  });
-  localStorage.setItem("category", JSON.stringify(categg));
+  var result = categoryName;
+  console.log(result);
+  categorydetails = [result];
+  console.log(categorydetails);
+  localStorage.setItem("category", JSON.stringify(categorydetails));
 }
 
-var users = JSON.parse(localStorage.getItem("users"));
-var currentUser = JSON.parse(localStorage.getItem("login"));
 var showDetails = function () {
-  var displayedProduct = JSON.parse(localStorage.getItem("productDetails"));
-  var currentProductId = this.id;
+  var currentUser = JSON.parse(localStorage.getItem("login"));
+  var users = JSON.parse(localStorage.getItem("users"));
+  var allproducts = JSON.parse(localStorage.getItem("allProducts"));
+  //var prodDetail = JSON.parse(localStorage.getItem("productDetails"));
+  var productId = this.id;
   if (localStorage.getItem("login") != null) {
-    var onlineUser = users.find((item) => item.email == currentUser.email);
-    var cartProduct = onlineUser.cart.find(
-      (prod) => prod.id == currentProductId
-    )
-      ? onlineUser.cart.find((prod) => prod.id == currentProductId)
-      : allProducts.find((item) => (item.id = currentProductId));
-    localStorage.setItem("productDetails", JSON.stringify(cartProduct));
+    var user = users.find((user) => user.email == currentUser.email);
+    if (user) {
+      var userCart = user.cart.find((item) => item.id == productId);
+      if (userCart) {
+        // exist in user cart
+        localStorage.setItem("productDetails", JSON.stringify(userCart));
+      } else {
+        //not add to cart before
+        userCart = allproducts.find((item) => item.id == productId);
+        localStorage.setItem("productDetails", JSON.stringify(userCart));
+      }
+    }
   } else {
-    displayedProduct = allProducts.find((item) => (item.id = currentProductId));
-    localStorage.setItem("productDetails", JSON.stringify(displayedProduct));
+    var show = allproducts.find((item) => item.id == productId);
+    localStorage.setItem("productDetails", JSON.stringify(show));
+    console.log("welcome unknown");
   }
 };
+
+var categories = localStorage.getItem("categories");
+
+// localStorage.clear();

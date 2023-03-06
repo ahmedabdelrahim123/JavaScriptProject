@@ -98,15 +98,13 @@
     height: 30px !important;
 }
 .bg-cart,.cat-btn {
-    background-color:#013d29;
-    color:#fff;
-    margin-top: 5px;
+    background-color:#013d29 !important;
+    color:#fff !important;
 }
 
 .bg-cart:hover,.cat-btn:hover {
-    color:black;
-    border-color: #013d29;
-    border-width: 2px;
+    color:rgb(255, 255, 255) !important;
+    border-color: #013d29 !important;
 }
 .contOfCardBody{
     background: #0a2b20;
@@ -125,6 +123,9 @@
 a{
 
     text-decoration: none !important;
+}
+.img-fluid{
+    height: 200px !important;
 }
 #product{
     position: relative;
