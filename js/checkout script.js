@@ -22,7 +22,7 @@ function showItems() {
             user.cart.forEach(product => {
 
                 var mainDiv = document.createElement("div");
-                mainDiv.className = "item-card card ";
+                mainDiv.className = "item-card  ";
                 var prodImg = document.createElement("img");
                 prodImg.className = "image shadow";
                 prodImg.setAttribute("src", product.thumbnail)
@@ -203,7 +203,7 @@ function bill() {
         }
     });
     sub.innerText = `$ ${subtot}`;
-    var taxes = subtot * 0.1;
+    var taxes =Math.floor(subtot * 0.1) ;
     tax.innerText = `$ ${taxes}`;
     total = subtot + taxes + 10.00 - discount;
     tot.innerText = `$ ${total}`;
@@ -332,16 +332,18 @@ function submit() {
             setTimeout(() => {
                 redirect();
             }, 2000);
-            pop.setAttribute("style", "color:black;");
-            pop.innerHTML = "Thank you for your payment!";
-            img.setAttribute("src", "../img/paid2.png")
+            // pop.setAttribute("style", "color:black !important;");
+            // pop.innerHTML = "Thank you for your payment!";
+            // img.setAttribute("src", "../images/paid2.png")
+            $(thankYou).modal("show");
 
         } else {
-            // console.log(cardHolder.value, exp.value, cvc.value, cardSelected, email.value)
-            pop.setAttribute("style", "color:red;");
-            pop.innerHTML = "Incomplete Data!";
-            img.setAttribute("src", "../img/no.png")
-            // console.log("missing data");
+            // // console.log(cardHolder.value, exp.value, cvc.value, cardSelected, email.value)
+            // pop.setAttribute("style", "color:red !important;");
+            // pop.innerHTML = "Incomplete Data!";
+            // img.setAttribute("src", "../images/no.png")
+            // // console.log("missing data");
+            $(declined).modal("show");
         }
     }
     else {
@@ -350,14 +352,17 @@ function submit() {
                 redirect();
             }, 2000);
             // console.log(mobile_flag)
-            pop.setAttribute("style", "color:black;");
-            pop.innerHTML = "Purchase confirmed!";
-            img.setAttribute("src", "../img/confirm.png");
+            // pop.setAttribute("style", "color:black; !important");
+            // pop.innerHTML = "Purchase confirmed!";
+            // img.setAttribute("src", "../images/confirm.png");
+            $(pay).modal("show");
         }
         else {
-            pop.setAttribute("style", "color:red;");
-            pop.innerHTML = "Incomplete Data!";
-            img.setAttribute("src", "../img/no.png")
+            // pop.setAttribute("style", "color:red !important;");
+            // pop.innerHTML = "Incomplete Data!";
+            // img.setAttribute("src", "../images/no.png")
+            $(declined).modal("show");
+
         }
 
     }
