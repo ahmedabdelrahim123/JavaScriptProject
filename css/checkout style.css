@@ -5,6 +5,13 @@
         font-family: 'Calibri', 'Trebuchet MS', sans-serif
     }
 
+    h3,
+    h4 {
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 25px;
+    }
+
     #arrow {
         display: flex;
         align-items: center;
@@ -13,8 +20,14 @@
         width: 400px;
     }
 
-    i {
+    .icon {
         color: black;
+        display: flex;
+        align-items: center;
+    }
+
+    #link {
+        text-decoration: none;
     }
 
     #backtocart {
@@ -24,9 +37,6 @@
     }
 
     .container {
-        /* margin-top: 80px; */
-        /* box-shadow: 0px 0px 5px 2px; */
-        width: 1400px;
         display: flex;
         flex-direction: row;
         border: none;
@@ -35,57 +45,117 @@
     #col1 {
         display: flex;
         flex-direction: column;
-        align-content: space-between;
+        align-items: space-between;
         margin: 15px;
+
+    }
+
+    .saveBTN {
+        border: none !important; 
+        border-radius: 20px !important;
+        padding: 10px !important;
+        margin-left: 10px !important;
+        background-color: #013d29 !important;
+        color: white !important;
+        /* font-size: small; */
+        width: 80px !important;
+    }
+
+    #col2 {
+        /* display: flex;
+        flex-direction: column;
+        width: fit-content; */
+
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 15px;
+    }
+
+    @media only screen and (min-width: 600px) {
+        #col2 {
+            width: 65%;
+        }
+    }
+
+    @media only screen and (min-width: 1000px) {
+        #col2 {
+            width: 100%;
+        }
     }
 
     .review-box {
         border: 1px solid lightgray;
-        border-radius: 10px;
-        width: 750px;
+        /* width: 750px; */
         padding: 20px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    .delivery {
         margin: 20px;
     }
 
-    #Item-Color {
-        padding-left: 10px;
-
+    .review-box2 {
+        padding: 20px;
+        /* padding-left: 20px;
+        margin-bottom: 20px;
+        margin-top: 20px; */
+        border-radius: 10px;
+        border: 1px solid lightgray;
     }
 
-    h3,
-    h4 {
-        font-weight: bold;
-        padding: 10px;
-        border-radius: 25px;
+    .mobileField {
+        margin-left: 40px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+
     }
 
     .item-card {
+        border-radius: 15px;
         border: none;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-    }
-
-    img {
-        width: 150px;
-        padding: 25px;
-    }
-
-    #qty {
-        margin-left: 300px;
-    }
-
-    .cards {
-        width: 100px;
+        padding: 10px;
         margin-top: 20px;
     }
 
-    #col2 {
-        border: 1px solid lightgray;
-        border-radius: 10px;
-        width: 450px;
-        padding: 20px;
-        margin: 15px;
+    .image {
+        display: flex;
+        width: 150px;
+        border-radius: 15px;
+    }
+
+    .mainInfoDiv {
+        display: flex;
+        /* align-items: center; */
+        flex-direction: column;
+        margin-left: 20px;
+    }
+
+    .Item-Color {
+        padding: 10px;
+    }
+
+    .secInfoDiv {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .extra {
+        display: flex;
+        align-items: center;
+    }
+
+
+    .card-type {
+        width: 80px;
+        padding: 10px;
     }
 
     hr {
@@ -103,25 +173,26 @@
 
     .cpnbtn,
     .large-btn {
-        border: none;
-        border-radius: 25px;
-        padding: 8px;
-        margin-left: 10px;
-        background-color: #013d29;
-        color: white;
-        font-size: small;
+        border: none !important;
+        border-radius: 25px !important;
+        padding: 8px !important;
+        margin-left: 10px !important; 
+        background-color: #013d29 !important;
+        color: white !important;
+        font-size: small !important;
     }
 
     .large-btn {
-        width: 350px;
-        margin: 20px;
-        font-size: large;
+        width: 350px !important;
+        margin: 20px !important;
+        font-size: large !important;
     }
 
     .cpnbtn:hover,
-    .large-btn:hover {
-        background-color: #013d29d7;
-        color: white;
+    .large-btn:hover,
+    .saveBTN:hover {
+        background-color: #013d29d7 !important;
+        color: white !important;
     }
 
     .coupon-section {
@@ -136,12 +207,11 @@
         padding: 5px;
     }
 
-    .wide-box {
-        padding: 10px;
-        border: 1px solid lightgray;
-        border-radius: 5px;
-        width: 400px;
+    .radio {
+        padding-bottom: 20px;
     }
+
+
 
     .form-row {
         display: flex;
@@ -157,7 +227,14 @@
     }
 
     .delivery-info {
+        padding-top: 10px;
+    }
+
+    .wide-box {
         padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        width: 400px;
     }
 
     .info-box {
@@ -180,13 +257,15 @@
         border-radius: 5px;
         width: 150px;
     }
-    .exp-box{
+
+    .exp-box {
         border: 1px solid lightgray;
         border-radius: 5px;
         width: 70px;
         padding: 10px;
 
     }
+
     .mini-row {
         display: flex;
         flex-direction: row;
@@ -212,16 +291,16 @@
 
     .save-btn,
     .edit-btn {
-        height: min-content;
-        background-color: rgba(144, 163, 188, 0.337);
-        margin-top: 10px;
-        border-radius: 25px;
+        height: min-content !important;
+        background-color: rgba(144, 163, 188, 0.337) !important;
+        margin-top: 10px !important; 
+        border-radius: 25px !important;
     }
 
     .save-btn:hover,
     .edit-btn:hover {
-        background-color: #013d29;
-        color: white
+        background-color: #013d29 !important;
+        color: white !important;
     }
 
     .form-check {
@@ -231,13 +310,13 @@
 
     }
 
-    .modal-body {
-        padding: 50px;
+    #MB{
+        padding: 50px !important;
     }
 
-    .modal-body>img {
-        width: 200px;
-        margin-left: 90px;
+    #MB>img {
+        width: 200px  !important;
+        margin-left: 90px !important;
     }
 
     .alert-box {
@@ -260,4 +339,10 @@
     .total {
         font-weight: bold;
         font-size: large;
+    }
+
+    table {
+        display: flex;
+        padding: 15px;
+        width: fit-content;
     }
