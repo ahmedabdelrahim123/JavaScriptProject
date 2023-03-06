@@ -28,7 +28,7 @@ getData().then((data) => {
         <h6 class="font-weight-semibold mb-2">
             <a href="/src/DetailsPage.html" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
         </h6>
-        <a href="#" class="text-muted" data-abc="true">${item.category}</a>
+        <a href="#" class="text-muted cats" data-abc="true" onClick="categoryFunction(${item.category})" >${item.category}</a>
     </div>
     <h3 class="mb-0 font-weight-semibold">$${item.price} </h3>
     <div>
@@ -43,6 +43,8 @@ getData().then((data) => {
     `;
     rowDiv.appendChild(column);
   }
+  
+  
 
   //Add products To Cart
   var buttons = document.getElementsByClassName("cart");
@@ -105,14 +107,12 @@ var productDetails = [];
 localStorage.setItem("productDetails", JSON.stringify(productDetails));
 
 var categorydetails = [];
-localStorage.setItem("category", JSON.stringify(categorydetails));
 function categoryFunction(categoryName) {
-  var categoryItems = JSON.parse(localStorage.getItem("category"));
-  console.log(categoryItems);
-  var categg = allProducts.filter(function (el) {
-    return el.category == categoryName;
-  });
-  localStorage.setItem("category", JSON.stringify(categg));
+  result = categoryName;
+  console.log(result);
+  categorydetails = [result];
+  console.log(categorydetails);
+  localStorage.setItem("category", JSON.stringify(categorydetails));
 }
 
 var showDetails = function () {
@@ -137,20 +137,10 @@ var showDetails = function () {
   } else {
     var show = allproducts.find((item) => item.id == productId);
     localStorage.setItem("productDetails", JSON.stringify(show));
-    console.log("welcome unknown");
+    console.log("welcome unknown");
   }
 };
 
-function findItemFromAllProducts() {
-  currentProductId = this.id;
-  var productss;
-  for (var item of allProducts) {
-    if (item.id == currentProductId) {
-      productss = item;
-    }
-  }
-  return productss;
-}
 var categories = localStorage.getItem("categories");
 
 // localStorage.clear();

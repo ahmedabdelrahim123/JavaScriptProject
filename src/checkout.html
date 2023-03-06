@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="../css/checkout style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
         </script>
@@ -23,6 +22,7 @@
             $("#footer").load("../src/common/footer.html");
         });
     </script>
+    <link rel="stylesheet" href="../css/checkout style.css">
 
 </head>
 
@@ -31,13 +31,13 @@
     <header id="header"></header>
 
     <div id="arrow">
-        <a href="../src/cart.html">
+        <a id="link" href="../src/cart.html">
             <h2> <i class="bi bi-arrow-left icon"></i>
             </h2>
         </a>
         <h4 id="backtocart"> Back to cart</h4>
     </div>
-    <div class="card container">
+    <div class="item-card container">
         <div class="row">
             <div id="col1" class="col">
                 <!-- Items Information section -->
@@ -183,9 +183,9 @@
                     <!-- card holder info -->
                     <section id="card-info" style="display: none;">
                         <div>
-                            <img class="card-type" id="amazon" src="../img/Amazon-Logo.png">
-                            <img class="card-type" id="master" src="../img/master.png">
-                            <img class="card-type" id="visa" src="../img/visa.png">
+                            <img class="card-type" id="amazon" src="../images/Amazon-Logo.png">
+                            <img class="card-type" id="master" src="../images/master.png">
+                            <img class="card-type" id="visa" src="../images/visa.png">
                         </div>
                         <form>
                             <div>
@@ -294,17 +294,43 @@
                             </tr>
                         </table>
                         <div>
-                            <button class="btn large-btn" type="submit" data-bs-toggle="modal" id="payBTN"
+                            <button class="btn large-btn" type="submit" id="payBTN"
                                 data-bs-target="#pay" onclick="submit();">Confirm
                            </button>
                         </div>
+                        <!-- data-bs-toggle="modal" -->
                         <!-- pop up -->
                         <div class="modal fade" id="pay" tabindex="-1" aria-labelledby="payment" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
-                                    <div class="modal-body">
-                                        <img id="done">
-                                        <h3 id='pop-up' class="modal-title text-center">
+                                    <div id="MB" class="modal-body">
+                                        <img id="done" src="../images/confirm.png">
+                                        <h3 id='pop-up' style="color:black;" class="modal-title text-center">
+                                            Purchase confirmed!
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="declined" tabindex="-1" aria-labelledby="payment" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div id="MB" class="modal-body">
+                                        <img  src="../images/no.png">
+                                        <h3  style="color:red;" class="modal-title text-center">
+                                            Incomplete Data!
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="thankYou" tabindex="-1" aria-labelledby="payment" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div id="MB" class="modal-body">
+                                        <img id="done" src="../images/paid2.png">
+                                        <h3 id='pop-up' style="color:black;" class="modal-title text-center">
+                                            Thank you for your payment!
                                         </h3>
                                     </div>
                                 </div>
@@ -321,5 +347,5 @@
 
 </body>
 <script src="../js/checkout script.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </html>
