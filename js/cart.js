@@ -13,7 +13,7 @@ function loadProductsFromLocalStorage(){
         users = JSON.parse(window.localStorage.getItem("users"))
         login = JSON.parse(window.localStorage.getItem("login"))
         users.forEach(user=>{
-            if(login[0].email == user.email){
+            if(login.email == user.email){
                 cart_Array = user.cart
                 userID = user.email
             }
