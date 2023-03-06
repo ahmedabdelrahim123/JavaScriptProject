@@ -20,7 +20,7 @@ getData().then((data) => {
     column.innerHTML = `   
     <div class="card-body">
     <div class="card-img-actions">
-        <img src="${item.images[0]}" class="card-img img-fluid" width="96" height="350" alt="">
+        <img src="${item.images[0]}" class="card-img img-fluid" alt="">
     </div>
 </div>
 <div class="card-body contOfCardBody bg-light text-center">
@@ -142,7 +142,7 @@ var showDetails = function () {
 };
 
 function findItemFromAllProducts() {
-  currentProductId = this.id;
+  var currentProductId = this.id;
   var productss;
   for (var item of allProducts) {
     if (item.id == currentProductId) {

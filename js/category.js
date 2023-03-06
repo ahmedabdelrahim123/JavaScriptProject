@@ -15,7 +15,7 @@ let getCategory =  JSON.parse(localStorage.getItem("category"))
 
 function getData(){
     all_data = JSON.parse(localStorage.getItem("allProducts"))
-    if (getCategory == null || getCategory == [] ) {
+    if (getCategory == null || getCategory.length == 0) {
         showData(checked_types)
     } else {
         checked_types.push(getCategory)
