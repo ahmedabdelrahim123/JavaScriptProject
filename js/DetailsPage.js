@@ -1,105 +1,109 @@
 var usersimg = document.getElementById("image");
 var userstitle = document.getElementById("title");
 var usersprice = document.getElementById("price");
-var buy=document.getElementsByClassName("buy");
+var buy = document.getElementsByClassName("buy");
 
-var i=0;
-var item =[];
- async function purchase(){
-   var response=await fetch ("https://dummyjson.com/products");
-    var data = await response.json();
-    var product=localStorage.getItem("show-item")
-    product=JSON.parse(product)
-    console.log(product.id);
-    var index= (product.id)-1;
-    var temp= {id:data.products[index].id,
-      brand:data.products[index].brand,
-      category:data.products[index].category,
-      description:data.products[index].description,
-      title:data.products[index].title,
-      quantity:i }
-      console.log("temp");
-    console.log( temp);
-    localStorage.setItem("show-item",JSON.stringify(temp))
-   // var product=localStorage.getItem("show-item")
-   //  console.log(product);  
+var i = 0;
+var item = [];
+async function purchase() {
+  var response = await fetch("https://dummyjson.com/products");
+  var data = await response.json();
+  var product = localStorage.getItem("show-item");
+  product = JSON.parse(product);
+  console.log(product.id);
+  var index = product.id - 1;
+  var temp = {
+    id: data.products[index].id,
+    brand: data.products[index].brand,
+    category: data.products[index].category,
+    description: data.products[index].description,
+    title: data.products[index].title,
+    quantity: i,
+  };
+  console.log("temp");
+  console.log(temp);
+  localStorage.setItem("show-item", JSON.stringify(temp));
+  // var product=localStorage.getItem("show-item")
+  //  console.log(product);
 }
-async function chart(){
-   var response=await fetch ("https://dummyjson.com/products");
-   var data = await response.json();
-   var product=localStorage.getItem("show-item")
-   product=JSON.parse(product)
-   console.log(product.id);
-   var index= (product.id)-1;
-   var temp= {id:data.products[index].id,
-     brand:data.products[index].brand,
-     category:data.products[index].category,
-     description:data.products[index].description,
-     title:data.products[index].title,
-     quantity:i }
-   item.push(temp);
-   localStorage.setItem("add-to-cart",JSON.stringify(item));
-   console.log("item");
-   console.log( item);
+async function chart() {
+  var response = await fetch("https://dummyjson.com/products");
+  var data = await response.json();
+  var product = localStorage.getItem("show-item");
+  product = JSON.parse(product);
+  console.log(product.id);
+  var index = product.id - 1;
+  var temp = {
+    id: data.products[index].id,
+    brand: data.products[index].brand,
+    category: data.products[index].category,
+    description: data.products[index].description,
+    title: data.products[index].title,
+    quantity: i,
+  };
+  item.push(temp);
+  localStorage.setItem("add-to-cart", JSON.stringify(item));
+  console.log("item");
+  console.log(item);
 }
-async function back (){
-   var response=await fetch ("https://dummyjson.com/products");
-   var data = await response.json();
-   var product=localStorage.getItem("show-item")
-   product=JSON.parse(product)
-   if (product.quantity===0)
-   {   
-      console.log();
-      localStorage.removeItem("show-item")
-      }
-}
-
- function increase() {
-   i=i+1;
-   document.getElementById("quantity").setAttribute("value",`${i}`);  
+async function back() {
+  var response = await fetch("https://dummyjson.com/products");
+  var data = await response.json();
+  var product = localStorage.getItem("show-item");
+  product = JSON.parse(product);
+  if (product.quantity === 0) {
+    console.log();
+    localStorage.removeItem("show-item");
+  }
 }
 
- function decrease() {
-if (i !=0){
-   i=i-1;
-   document.getElementById("quantity").setAttribute("value",`${i}`);
-}
+function increase() {
+  i = i + 1;
+  document.getElementById("quantity").setAttribute("value", `${i}`);
 }
 
+function decrease() {
+  if (i != 0) {
+    i = i - 1;
+    document.getElementById("quantity").setAttribute("value", `${i}`);
+  }
+}
 
-async function displaydata(){
-var response=await fetch ("https://dummyjson.com/products");
-var data = await response.json();
-// console.log(data);
+async function displaydata() {
+  var response = await fetch("https://dummyjson.com/products");
+  var data = await response.json();
+  // console.log(data);
 
-//local storage
-var product=localStorage.getItem("show-item")
-product=JSON.parse(product)
-// var index= (product.id)-1;
-// console.log(index);
+  //local storage
+  var product = localStorage.getItem("show-item");
+  product = JSON.parse(product);
+  // var index= (product.id)-1;
+  // console.log(index);
 
-usersimg.setAttribute("src",data.products[0].thumbnail);
-userstitle.innerHTML=`${data.products[0].title}`;
-usersprice.innerHTML=`${data.products[0].price}`;
+  usersimg.setAttribute("src", data.products[0].thumbnail);
+  userstitle.innerHTML = `${data.products[0].title}`;
+  usersprice.innerHTML = `${data.products[0].price}`;
 
-// console.log(data.products[0]);
+  // console.log(data.products[0]);
 
-var arrofobj=Object.values(data.products[0])
-var index=0;
-var temp= {id:data.products[index].id,
-   brand:data.products[index].brand,
-   category:data.products[index].category,
-   description:data.products[index].description,
-   title:data.products[index].title,
-   quantity:i }
-   console.log("temp");
- console.log( temp);
- localStorage.setItem("show-item",JSON.stringify(temp))
+  var arrofobj = Object.values(data.products[0]);
+  var index = 0;
+  var temp = {
+    id: data.products[index].id,
+    brand: data.products[index].brand,
+    category: data.products[index].category,
+    description: data.products[index].description,
+    title: data.products[index].title,
+    quantity: i,
+  };
+  console.log("temp");
+  console.log(temp);
+  localStorage.setItem("show-item", JSON.stringify(temp));
 }
 // displaydata().then(()=>{
 
 // })
- displaydata();
+displaydata();
 
 // function restore(){
 
