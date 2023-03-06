@@ -4,9 +4,6 @@ async function fetchData() {
     return data.products;
 }
 
-/* let selectedCategory = "laptops"
-window.localStorage.setItem("category", selectedCategory) */
-
 var lists = document.querySelectorAll(".list-group-item")
 var products_container = document.querySelector(".product-container")
 var checked_types = []
