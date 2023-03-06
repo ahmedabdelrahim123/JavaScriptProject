@@ -1,5 +1,4 @@
 var rowDiv = document.querySelector(".divOfBestSeller");
-console.log(rowDiv);
 var catDiv = document.querySelector(".divOfCategories");
 var categRow = document.querySelector(".categRow");
 
@@ -28,7 +27,7 @@ getData().then((data) => {
 <div class="card-body contOfCardBody bg-light text-center">
     <div class="mb-2">
         <h6 class="font-weight-semibold mb-2">
-            <a href="DetailsPage.html" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
+            <a href="#" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
         </h6>
         <a href="#" class="text-muted" data-abc="true">${item.category}</a>
     </div>
@@ -65,7 +64,7 @@ getData().then((data) => {
     }
     console.log(cartProduct);
     console.log(item);
-    //  console.log(currentUser.email);
+    console.log(currentUser.email);
 
     if (localStorage.getItem("login") != null) {
       console.log(currentUser.email);
@@ -135,7 +134,6 @@ console.log(currentUser);
 var showDetails = function () {
   var displayedProduct = JSON.parse(localStorage.getItem("productDetails"));
   var currentProductId = this.id;
-  console.log(currentUser.email);
   if (localStorage.getItem("login") != null) {
     var onlineUser = users.find((item) => item.email == currentUser.email);
     var cartProduct = onlineUser.cart.find(
