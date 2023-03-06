@@ -159,12 +159,14 @@ async function displaydata() {
 // {
 //   if 
 // }
-usersimg.setAttribute("src",data.products[index].thumbnail);
+/*******************************Images  */
+//usersimg.setAttribute("src",data.products[index].thumbnail);
+
 userstitle.innerHTML=`${data.products[index].title}`;
-usersprice.innerHTML=`${data.products[index].price}$`;
+usersprice.innerHTML=`$${data.products[index].price}`;
 userdescribtion.innerHTML=`${data.products[index].description}`;
 userdiscount.innerHTML=`${data.products[index].discountPercentage}`;
-userrate.innerHTML=`${data.products[index].rating}/5`;
+userrate.innerHTML=`rate: ${data.products[index].rating}/5`;
 
 
 }
