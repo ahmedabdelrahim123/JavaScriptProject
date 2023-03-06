@@ -39,26 +39,6 @@ async function getnext(){
 
    
 }
-
-//  async function purchase(){
-//    var response=await fetch ("https://dummyjson.com/products");
-//     var data = await response.json();
-//     var product=localStorage.getItem("show-item")
-//     product=JSON.parse(product)
-//     console.log(product.id);
-//     var index= (product.id)-1;
-//     var temp= {id:data.products[index].id,
-//       brand:data.products[index].brand,
-//       category:data.products[index].category,
-//       description:data.products[index].description,
-//       title:data.products[index].title,
-//       quantity:i }
-//       console.log("temp");
-//     console.log( temp);
-//     localStorage.setItem("show-item",JSON.stringify(temp))
-//    // var product=localStorage.getItem("show-item")
-//    //  console.log(product);  
-// }
 async function chart() {
   var response = await fetch("https://dummyjson.com/products");
   var data = await response.json();
