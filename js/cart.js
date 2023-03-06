@@ -13,7 +13,7 @@ function loadProductsFromLocalStorage(){
         users = JSON.parse(window.localStorage.getItem("users"))
         login = JSON.parse(window.localStorage.getItem("login"))
         users.forEach(user=>{
-            if(login.email == user.email){
+            if(login[0].email == user.email){
                 cart_Array = user.cart
                 userID = user.email
             }
@@ -111,7 +111,7 @@ function updateLocalStorage(input,type){
     }
     if(type == "minus"){
         cart_Array.forEach(element=>{
-            if(element.name == name){
+            if(element.title == name){
                 var price = element.price
                 total_price = total_price - price
                 allPrice.textContent = `$${total_price}.00`
@@ -120,7 +120,7 @@ function updateLocalStorage(input,type){
         })
     }
     for(let i=0;i<users.length;i++){
-        if(users[i].id == userID){
+        if(users[i].email == userID){
             users[i].cart = cart_Array
         }
     }
