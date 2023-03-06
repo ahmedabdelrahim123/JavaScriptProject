@@ -1,5 +1,5 @@
 var rowDiv = document.querySelector(".divOfBestSeller");
-console.log(rowDiv)
+console.log(rowDiv);
 var catDiv = document.querySelector(".divOfCategories");
 var categRow = document.querySelector(".categRow");
 
@@ -18,7 +18,7 @@ getData().then((data) => {
     //Start of setting IDs for buttons
 
     var column = document.createElement("div");
-    column.classList.add("col-md-4", "mt-2","mb-3", "swiper-slide", "card");
+    column.classList.add("col-md-4", "mt-2", "mb-3", "swiper-slide", "card");
     column.innerHTML = `   
     <div class="card-body">
     <div class="card-img-actions">
@@ -28,7 +28,7 @@ getData().then((data) => {
 <div class="card-body contOfCardBody bg-light text-center">
     <div class="mb-2">
         <h6 class="font-weight-semibold mb-2">
-            <a href="#" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
+            <a href="DetailsPage.html" class="mb-2 nameOfProduct mb-3" data-abc="true" id="${item.id}">${item.title}</a>
         </h6>
         <a href="#" class="text-muted" data-abc="true">${item.category}</a>
     </div>
@@ -65,7 +65,7 @@ getData().then((data) => {
     }
     console.log(cartProduct);
     console.log(item);
-    console.log(currentUser.email);
+    //  console.log(currentUser.email);
 
     if (localStorage.getItem("login") != null) {
       console.log(currentUser.email);
@@ -101,7 +101,9 @@ getData().then((data) => {
       categ.push(item.category);
     }
   }
+
   var names = document.getElementsByClassName("nameOfProduct");
+
   for (var i = 0; i < names.length; i++) {
     names[i].addEventListener("click", showDetails);
   }
@@ -127,45 +129,25 @@ function categoryFunction(categoryName) {
   localStorage.setItem("category", JSON.stringify(categg));
 }
 
-
-
+var users = JSON.parse(localStorage.getItem("users"));
+var currentUser = JSON.parse(localStorage.getItem("login"));
+console.log(currentUser);
 var showDetails = function () {
-  var currentUser = JSON.parse(localStorage.getItem("login"));
-  var users = JSON.parse(localStorage.getItem("users"));
-  var prodDetail = JSON.parse(localStorage.getItem("productDetails"));
-  var productId = this.id;
+  var displayedProduct = JSON.parse(localStorage.getItem("productDetails"));
+  var currentProductId = this.id;
+  console.log(currentUser.email);
   if (localStorage.getItem("login") != null) {
-    console.log("welcome");
-    for (var user of users) {
-      if (user.email == currentUser.email) {
-        console.log(user.email);
-        var result = user.cart.find((item) => item.id == productId);
-        if (result == undefined) {
-          console.log("its undefined");
-          for (var item of allProducts) {
-            if (item.id == productId) {
-              if (localStorage.getItem("productDetails") != null) {
-                prodDetail = item;
-              }
-            }
-          }
-          console.log(prodDetail);
-          localStorage.setItem("productDetails", JSON.stringify(prodDetail));
-        } else {
-          console.log("done");
-          console.log(result);
-          for (var item of allProducts) {
-            if (item.id == productId) {
-              if (localStorage.getItem("productDetails") != null) {
-                prodDetail = item;
-              }
-            }
-          }
-          localStorage.setItem("productDetails", JSON.stringify(prodDetail));
-        }
-      }
-    }
+    var onlineUser = users.find((item) => item.email == currentUser.email);
+    var cartProduct = onlineUser.cart.find(
+      (prod) => prod.id == currentProductId
+    )
+      ? onlineUser.cart.find((prod) => prod.id == currentProductId)
+      : allProducts.find((item) => (item.id = currentProductId));
+    console.log(cartProduct);
+    localStorage.setItem("productDetails", JSON.stringify(cartProduct));
   } else {
-    console.log("welcome unknown");
+    displayedProduct = allProducts.find((item) => (item.id = currentProductId));
+    console.log(displayedProduct);
+    localStorage.setItem("productDetails", JSON.stringify(displayedProduct));
   }
 };
