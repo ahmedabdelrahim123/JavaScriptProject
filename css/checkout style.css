@@ -132,9 +132,13 @@
 
     .mainInfoDiv {
         display: flex;
-        align-items: center;
+        /* align-items: center; */
         flex-direction: column;
         margin-left: 20px;
+    }
+
+    .Item-Color {
+        padding: 10px;
     }
 
     .secInfoDiv {

@@ -25,17 +25,17 @@ function showItems() {
                 mainDiv.className = "item-card card ";
                 var prodImg = document.createElement("img");
                 prodImg.className = "image shadow";
-                prodImg.setAttribute("src", product.img)
+                prodImg.setAttribute("src", product.thumbnail)
                 // mainDiv.appendChild(prodImg);
 
                 var mainInfoDiv = document.createElement("div");
                 mainInfoDiv.className = "mainInfoDiv";
                 var titleHeader = document.createElement("h4");
-                var itemName = document.createTextNode(product.name);
+                var itemName = document.createTextNode(product.title);
                 titleHeader.appendChild(itemName);
                 var colorHeader = document.createElement("p");
                 colorHeader.className = "Item-Color";
-                var itemCol = document.createTextNode(`Color: ${product.color}`);
+                var itemCol = document.createTextNode(`Category: ${product.category}`);
                 colorHeader.appendChild(itemCol);
                 mainInfoDiv.appendChild(titleHeader);
                 mainInfoDiv.appendChild(colorHeader);
@@ -258,7 +258,7 @@ function applyCoupon() {
 }
 
 function redirect() {
-    location.href = "../src/cart.html";
+    location.href = "../src/home.html";
     users.forEach(user => {
         if (user.email == loggedin.email) {
             user.cart = [];
