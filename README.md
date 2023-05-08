@@ -24,7 +24,7 @@ Shopaholic is an E-Commerce project
 
 ## Demo
 
-[Demo Video](https://drive.google.com/file/d/17KZb_68AmEyeVGqc0d9tdMvLODNThoFh/view?usp=share_link)
+[Demo Video](https://vimeo.com/824758675?share=copy)
 
 ![My Image](/images/Home.jpg)
 
